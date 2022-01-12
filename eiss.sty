@@ -1,0 +1,893 @@
+
+% eiss.sty
+% Copyright 2020 Christopher Pinon
+% 2020-12-30 v3.2a
+% 2020-02-02 v3.2
+% LaTeX template for EISS 13
+
+% This work may be distributed and/or modified under the conditions of
+% the LaTeX Project Public License, either version 1.3 of this license
+% or (at your option) any later version. The latest version of this
+% license is in http://www.latex-project.org/lppl.txt and version 1.3 or
+% later is part of all distributions of LaTeX version 2005/12/01 or
+% later.
+%
+% This work has the LPPL maintenance status 'maintained'.
+% 
+% The Current Maintainer of this work is Christopher Pinon
+% (cjpinon@implicature.xyz).
+
+% This work consists of the files:
+
+% AUTHOR_[body|master|refs].tex, check-for-packages.tex,
+% eiss13_logo_blank.[eps|pdf], eiss.sty, EXAMPLE_bib.bib,
+% EXAMPLE_[body|master|refs].tex, EXAMPLE_master.pdf, README.txt
+
+% This is a LaTeX template for EISS 13 (= Empirical Issues in Syntax and
+% Semantics 13). See https://implicature.xyz/eiss13/ for more
+% information.
+
+% History:
+
+% v3.2a: Put volume URL on first page on same line as rest of
+% bibliographic info (in case of large page numbers)
+% v3.2: Modification of v3.1c for EISS 13. Thanks to Laurent Roussarie
+% for input
+
+% Let's begin:
+\NeedsTeXFormat{LaTeX2e}[2015/10/01]%
+\ProvidesPackage{eiss}[2020/12/30 v3.2a LaTeX template for EISS 13]
+
+% Set up the page geometry:
+\RequirePackage{geometry}%
+\geometry{headsep=3mm,includehead,margin=10mm,nofoot}%
+% Assuming A5 (148mm x 210mm), this gives a text width of 128mm and a
+% text height of 190mm
+
+% Define Utopia as the main font:
+\newcommand{\UseUtopia}{%
+  \RequirePackage{fourier}% Utopia for serif
+  \RequirePackage[scaled=.95]{cabin}% Cabin for sans serif
+  \RequirePackage{zlmtt}% Latin Modern Typewriter for mono
+}
+
+% Define Palatino as the main font (was the default font used in v3.1c
+% for EISS 12):
+\newcommand{\UsePalatino}{%
+  \RequirePackage[osf]{mathpazo}% Palatino for serif
+  \linespread{1.05}%
+  \RequirePackage[scaled]{helvet}% Helvetica for sans serif
+  \RequirePackage{courier}% Courier for mono
+}
+
+% Define Latin Modern as an alternative font:
+\newcommand{\UseLatinModern}{%
+  \RequirePackage{lmodern}%
+}
+
+% Define Bitstream Charter as an alternative font (was the default font
+% used in v3.0f for EISS 11):
+\newcommand{\UseBitstreamCharter}{%
+% Use Bitstream Charter for the serif font:
+  \RequirePackage[bitstream-charter]{mathdesign}%
+% Now set the sans serif and typewriter fonts:
+  \renewcommand{\sfdefault}{fvs}% A.k.a. Bitstream Vera Sans
+  \renewcommand{\ttdefault}{fvm}% A.k.a. Bitstream Vera Mono
+}
+
+% Define an extended version of Bitstream Charter as an alternative
+% font, as provided by the package XCharter in conjunction with
+% mathdesign (was the font used for EISS 11 in the end):
+\newcommand{\UseBitstreamCharterExtended}{%
+% Use Bitstream Charter for the serif font:
+  \RequirePackage[bitstream-charter,expert]{mathdesign}%
+  \RequirePackage[scaled=.96,oldstyleI]{XCharter}%
+% Now set the sans serif and typewriter fonts:
+  \renewcommand{\sfdefault}{fvs}% A.k.a. Bitstream Vera Sans
+  \renewcommand{\ttdefault}{fvm}% A.k.a. Bitstream Vera Mono
+}
+
+% Just in case someone really wants to use Times (via mathptmx):
+\newcommand{\UseTimes}{%
+  \RequirePackage{mathptmx}% Times for serif
+  \RequirePackage[scaled=.92]{helvet}% Helvetica for sans serif
+  \RequirePackage{courier}% Courier for mono
+}
+
+% By the way, since the package times is deprecated (as opposed to the
+% package mathptmx), let's issue a warning if times is loaded:
+\AtBeginDocument{%
+  \@ifpackageloaded{times}%
+  {%
+    \PackageWarning{eiss}{Please don't use the package times!}%
+  }%
+  {}%
+}
+
+% For those who need phonetic (IPA) symbols:
+\newcommand{\UseTipa}{%
+  \RequirePackage[T1]{tipa}%
+  \renewcommand\tipaencoding{\fontencoding{T3}\fontfamily{ptm}\selectfont}%
+}
+
+% Use T1 and TS1 font encodings:
+\RequirePackage[T1]{fontenc}%
+\RequirePackage{textcomp}
+
+% Needed in order to check whether pdflatex is used:
+\RequirePackage{ifpdf}
+
+% Let's get some color:
+\RequirePackage[dvipsnames,svgnames,x11names]{xcolor}%
+% From https://www.canva.com/learn/100-color-combinations/:
+% 49. Violet Sunset
+\definecolor{49stoneground}{RGB}{75,67,69}% HEX #4b4345; stoneground
+\definecolor{49lapis}{RGB}{16,42,73}% HEX #102a49; lapis
+\definecolor{49salmon}{RGB}{247,155,119}% HEX #f79b77; salmon
+\definecolor{49peppercorn}{RGB}{117,82,72}% HEX #755248; peppercorn
+
+% From http://ethanschoonover.com/solarized (used for EISS 12):
+% Accent colors:
+\definecolor{SOLyellow}{RGB}{181,137,0}% HEX #b58900; Solarized yellow
+\definecolor{SOLorange}{RGB}{203,75,22}% HEX #cb4b16; Solarized orange
+\definecolor{SOLmagenta}{RGB}{211,54,130}% HEX #d33682; Solarized magenta
+\definecolor{SOLviolet}{RGB}{108,113,196}% HEX #6c71c4; Solarized violet
+\definecolor{SOLcyan}{RGB}{42,161,152}% HEX #2aa198; Solarized cyan
+\definecolor{SOLgreen}{RGB}{133,153,0}% HEX #859900; Solarized green
+
+% Define the colors of the French flag (used for EISS 11):
+\definecolor{FRblue}{HTML}{0055A4}% RGB (0,85,164); French blue
+% White is predefined as "White"
+\definecolor{FRred}{HTML}{EF4135}% RGB (239,65,53); French red
+
+% For the page color (in order to soften the default background white):
+\pagecolor{WhiteSmoke}% HEX #f5f5f5
+
+% Commands for colors of headings:
+\newcommand{\HeadingsColor}{49stoneground}%
+\newcommand{\SubHeadingsColor}{49stoneground}%
+\newcommand{\SubSubHeadingsColor}{49stoneground}%
+\newcommand{\ParagraphHeadingsColor}{49peppercorn}%
+\newcommand{\SubParagraphHeadingsColor}{49peppercorn}%
+\newcommand{\RuleColor}{49salmon}
+
+% Command for color of authors:
+\newcommand{\AuthorsColor}{49lapis}
+
+% Command for color of "other" (bullet, &, ed., eds.):
+\newcommand{\OtherColor}{49peppercorn}
+
+% For the captions of figures and tables:
+\RequirePackage{caption}%
+\DeclareCaptionLabelSeparator*{HspaceSep}{\hspace*{2mm}}%
+\captionsetup{font=small,labelfont={sf,bf,color=\HeadingsColor},labelsep=HspaceSep}
+
+% For the headings of definitions, theorems, and the like:
+\RequirePackage{theorem}%
+\theoremheaderfont{\normalfont\bfseries\color{\HeadingsColor}}%
+\setlength{\theorempreskipamount}{3mm}%
+\setlength{\theorempostskipamount}{3mm}
+
+% For the headers and footers:
+\RequirePackage{fancyhdr}%
+\pagestyle{fancy}%
+\fancyhf{}%
+% Taken from fancyhdr.sty; added color):
+\def\headrule{{\color{\RuleColor}\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
+    \hrule\@height\headrulewidth\@width\headwidth
+    \vskip-\headrulewidth}}%
+% To make fancyhdr v3.10 happy:
+\setlength{\footskip}{4.35004pt}
+
+% Set the various section titles:
+\RequirePackage{titlesec}%
+\titleformat{\section}[block]{\color{\HeadingsColor}\sffamily\large\bfseries}{\thesection}{2mm}{}%
+\titleformat{\subsection}[block]{\color{\SubHeadingsColor}\sffamily\normalsize\bfseries}{\thesubsection}{2mm}{}%
+\titleformat{\subsubsection}[block]{\color{\SubSubHeadingsColor}\sffamily\normalsize\itshape\bfseries}{\thesubsubsection}{2mm}{}%
+\titleformat{\paragraph}[runin]{\color{\ParagraphHeadingsColor}\sffamily\normalsize\bfseries}{\theparagraph}{2mm}{}%
+\titleformat{\subparagraph}[runin]{\color{\SubParagraphHeadingsColor}\sffamily\small\bfseries}{\thesubparagraph}{2mm}{}%
+\titlespacing*{\section}{0mm}{3mm}{0mm}%
+\titlespacing*{\subsection}{5mm}{3mm}{0mm}%
+\titlespacing*{\subsubsection}{10mm}{3mm}{0mm}%
+\titlespacing*{\paragraph}{0cm}{3mm}{2mm}%
+\titlespacing*{\subparagraph}{0mm}{3mm}{2mm}
+
+% It's useful to have a reduced paragraph (uses \subparagraph{}):
+\newcommand{\reducedparagraph}[2]{\subparagraph{#1} {\small #2}}
+% Which we can make immediate use of:
+\newcommand{\Thanks}{We thank everyone for their kind advice.}%
+\newcommand{\MakeThanks}{\reducedparagraph{Acknowledgments}{\Thanks}}
+
+% For modifying lists:
+\RequirePackage{enumitem}%
+\setlist{noitemsep,topsep=2mm}
+
+% For including graphic files:
+\RequirePackage{graphicx}
+
+% For modifying the date (e.g., \today):
+\RequirePackage{datetime}%
+\yyyymmdddate%
+\renewcommand{\dateseparator}{-}
+% (Note that datetime has been officially obsolete since 2015-03-24 and
+% has been officially replaced by datetime2. Nevertheless, datetime is
+% simpler and smaller than datetime2, so we'll continue to use it for
+% now.)
+
+% For the references:
+%\RequirePackage{natbib}%
+\RequirePackage[backend=biber,
+                natbib=true,
+			    bibstyle=biblatex-gl,
+			    citestyle=gl-authoryear-comp,
+			    maxcitenames=3,
+			    maxbibnames=99]{biblatex}
+			
+\renewcommand*{\bibfont}{\normalfont\small}
+
+% A useful package for arithmetic operations:
+\RequirePackage{calc}
+
+% For typesetting URLs:
+\RequirePackage{url}
+
+% The following definition is inspired by a solution proposed by
+% D. Carlisle at
+% http://tex.stackexchange.com/questions/107541/lowercase-inside-url. We'll
+% need this definition for inserting an expanding macro into a URL. (The
+% problem is that e.g. \url{\EISSurl} doesn't produce the intended
+% result: \EISSurl isn't expanded in this case, but we want it to be.)
+\newcommand{\SpUrl}[1]{%
+  \edef\tmp{\noexpand\url{#1}}%
+  \tmp}
+
+% By the way, why not use hyperref instead of url? If we were certain
+% that every author would use LaTeX and compile using pdflatex, then
+% hyperref would be a real option. But we don't have this certainty: (i)
+% some authors may need to compile using latex + dvips + ps2pdf, in
+% which case the line-breaking of long links (in particular, citation
+% links) is a problem; (ii) some authors may not even use LaTeX, in
+% which case the attempt to emulate the particular behavior of hyperref
+% in a word processor is a problem. So, unfortunately, even if (only
+% fairly rough) uniformity is a goal, hyperref is not a real option for
+% us. Accordingly, let's issue a warning if hyperref is loaded:
+\AtBeginDocument{%
+  \@ifpackageloaded{hyperref}%
+  {%
+    \PackageWarning{eiss}{Please don't use the package hyperref!}%
+  }%
+  {}%
+}
+
+% For a custom quoting environment (LaTeX's standard environments quote
+% and quotation aren't flexible):
+\RequirePackage[font=small,vskip=3mm]{quoting}
+
+% Commands for the first and last names of the authors (up to four):
+\newcommand{\AuthorAFirstName}{AuthorA-FName}%
+\newcommand{\AuthorALastName}{AuthorA-LName}%
+\newcommand{\AuthorBFirstName}{AuthorB-FName}%
+\newcommand{\AuthorBLastName}{AuthorB-LName}%
+\newcommand{\AuthorCFirstName}{AuthorC-FName}%
+\newcommand{\AuthorCLastName}{AuthorC-LName}%
+\newcommand{\AuthorDFirstName}{AuthorD-FName}%
+\newcommand{\AuthorDLastName}{AuthorD-LName}
+
+% Concatenate the first with the last names:
+\newcommand{\AuthorA}{\AuthorAFirstName\ \AuthorALastName}%
+\newcommand{\AuthorB}{\AuthorBFirstName\ \AuthorBLastName}%
+\newcommand{\AuthorC}{\AuthorCFirstName\ \AuthorCLastName}%
+\newcommand{\AuthorD}{\AuthorDFirstName\ \AuthorDLastName}
+
+% Commands for the first initials of the first names of the authors:
+\newcommand{\AuthorAFirstInitial}{A}%
+\newcommand{\AuthorBFirstInitial}{B}%
+\newcommand{\AuthorCFirstInitial}{C}%
+\newcommand{\AuthorDFirstInitial}{D}
+
+% Concatenate the first initials of the first names with the last names:
+\newcommand{\AuthorAShort}{\AuthorAFirstInitial.~\AuthorALastName}%
+\newcommand{\AuthorBShort}{\AuthorBFirstInitial.~\AuthorBLastName}%
+\newcommand{\AuthorCShort}{\AuthorCFirstInitial.~\AuthorCLastName}%
+\newcommand{\AuthorDShort}{\AuthorDFirstInitial.~\AuthorDLastName}
+
+% Introduce affiliations and URLs:
+\newcommand{\AuthorAAffiliation}{AuthorA-Affiliation}%
+\newcommand{\AuthorAUrl}{AuthorA-URL}%
+\newcommand{\AuthorBAffiliation}{AuthorB-Affiliation}%
+\newcommand{\AuthorBUrl}{AuthorB-URL}%
+\newcommand{\AuthorCAffiliation}{AuthorC-Affiliation}%
+\newcommand{\AuthorCUrl}{AuthorC-URL}%
+\newcommand{\AuthorDAffiliation}{AuthorD-Affiliation}%
+\newcommand{\AuthorDUrl}{AuthorD-URL}
+
+% For the title of the paper:
+\newcommand{\TitleOfPaper}{The title of the paper}
+
+% For the title of the paper in the running headers (defaults to
+% \TitleOfPaper):
+\newcommand{\TitleOfPaperInHeader}{\TitleOfPaper}
+
+% For the abstract of the paper:
+\newcommand{\AbstractOfPaper}{This is the abstract of the paper.}
+
+% For the keywords of the paper (up to eight):
+\newcommand{\KeywordOne}{Keyword1}%
+\newcommand{\KeywordTwo}{Keyword2}%
+\newcommand{\KeywordThree}{Keyword3}%
+\newcommand{\KeywordFour}{Keyword4}%
+\newcommand{\KeywordFive}{Keyword5}%
+\newcommand{\KeywordSix}{Keyword6}%
+\newcommand{\KeywordSeven}{Keyword7}%
+\newcommand{\KeywordEight}{Keyword8}
+
+% For the keywords in the PDF metadata:
+\newcommand{\KeywordOnepdfinfo}{\KeywordOne}%
+\newcommand{\KeywordTwopdfinfo}{\KeywordTwo}%
+\newcommand{\KeywordThreepdfinfo}{\KeywordThree}%
+\newcommand{\KeywordFourpdfinfo}{\KeywordFour}%
+\newcommand{\KeywordFivepdfinfo}{\KeywordFive}%
+\newcommand{\KeywordSixpdfinfo}{\KeywordSix}%
+\newcommand{\KeywordSevenpdfinfo}{\KeywordSeven}%
+\newcommand{\KeywordEightpdfinfo}{\KeywordEight}
+
+% Define as a convenience:
+\newcommand{\tpc}{\textperiodcentered}
+
+% Concatenate the keywords in two ways (starting with four keywords):
+\newcommand{\FourKeywordBullet}{\KeywordOne~\tpc\ \KeywordTwo~\tpc\
+  \KeywordThree~\tpc\ \KeywordFour}%
+\newcommand{\FiveKeywordBullet}{\KeywordOne~\tpc\ \KeywordTwo~\tpc\
+  \KeywordThree~\tpc\ \KeywordFour~\tpc\ \KeywordFive}%
+\newcommand{\SixKeywordBullet}{\KeywordOne~\tpc\ \KeywordTwo~\tpc\
+  \KeywordThree~\tpc\ \KeywordFour~\tpc\ \KeywordFive~\tpc\
+  \KeywordSix}%
+\newcommand{\SevenKeywordBullet}{\KeywordOne~\tpc\ \KeywordTwo~\tpc\
+  \KeywordThree~\tpc\ \KeywordFour~\tpc\ \KeywordFive~\tpc\
+  \KeywordSix~\tpc\ \KeywordSeven}%
+\newcommand{\EightKeywordBullet}{\KeywordOne~\tpc\ \KeywordTwo~\tpc\
+  \KeywordThree~\tpc\ \KeywordFour~\tpc\ \KeywordFive~\tpc\
+  \KeywordSix~\tpc\ \KeywordSeven~\tpc\ \KeywordEight}
+
+\newcommand{\FourKeywordpdfinfo}{\KeywordOnepdfinfo, \KeywordTwopdfinfo,
+  \KeywordThreepdfinfo, \KeywordFourpdfinfo}%
+\newcommand{\FiveKeywordpdfinfo}{\KeywordOnepdfinfo, \KeywordTwopdfinfo,
+  \KeywordThreepdfinfo, \KeywordFourpdfinfo, \KeywordFivepdfinfo}%
+\newcommand{\SixKeywordpdfinfo}{\KeywordOnepdfinfo, \KeywordTwopdfinfo,
+  \KeywordThreepdfinfo, \KeywordFourpdfinfo, \KeywordFivepdfinfo,
+  \KeywordSixpdfinfo}%
+\newcommand{\SevenKeywordpdfinfo}{\KeywordOnepdfinfo,
+  \KeywordTwopdfinfo, \KeywordThreepdfinfo, \KeywordFourpdfinfo,
+  \KeywordFivepdfinfo, \KeywordSixpdfinfo, \KeywordSevenpdfinfo}%
+\newcommand{\EightKeywordpdfinfo}{\KeywordOnepdfinfo,
+  \KeywordTwopdfinfo, \KeywordThreepdfinfo, \KeywordFourpdfinfo,
+  \KeywordFivepdfinfo, \KeywordSixpdfinfo, \KeywordSevenpdfinfo,
+  \KeywordEightpdfinfo}
+
+% Define the number of keywords to be used:
+\newcommand{\UseFourKeyword}{%
+  \newcommand{\KeywordBullet}{\FourKeywordBullet}%
+  \newcommand{\Keywordpdfinfo}{\FourKeywordpdfinfo}%
+}
+
+\newcommand{\UseFiveKeyword}{%
+  \newcommand{\KeywordBullet}{\FiveKeywordBullet}%
+  \newcommand{\Keywordpdfinfo}{\FiveKeywordpdfinfo}%
+}
+
+\newcommand{\UseSixKeyword}{%
+  \newcommand{\KeywordBullet}{\SixKeywordBullet}%
+  \newcommand{\Keywordpdfinfo}{\SixKeywordpdfinfo}%
+}
+
+\newcommand{\UseSevenKeyword}{%
+  \newcommand{\KeywordBullet}{\SevenKeywordBullet}%
+  \newcommand{\Keywordpdfinfo}{\SevenKeywordpdfinfo}%
+}
+
+\newcommand{\UseEightKeyword}{%
+  \newcommand{\KeywordBullet}{\EightKeywordBullet}%
+  \newcommand{\Keywordpdfinfo}{\EightKeywordpdfinfo}%
+}
+
+% Some further useful abbreviations:
+\newcommand{\AuthorAColor}{\textcolor{\AuthorsColor}{\AuthorA}}%
+\newcommand{\AuthorBColor}{\textcolor{\AuthorsColor}{\AuthorB}}%
+\newcommand{\AuthorCColor}{\textcolor{\AuthorsColor}{\AuthorC}}%
+\newcommand{\AuthorDColor}{\textcolor{\AuthorsColor}{\AuthorD}}
+
+\newcommand{\AuthorAShortColor}{\textcolor{\AuthorsColor}{\AuthorAShort}}%
+\newcommand{\AuthorBShortColor}{\textcolor{\AuthorsColor}{\AuthorBShort}}%
+\newcommand{\AuthorCShortColor}{\textcolor{\AuthorsColor}{\AuthorCShort}}%
+\newcommand{\AuthorDShortColor}{\textcolor{\AuthorsColor}{\AuthorDShort}}
+
+\newcommand{\AndColor}{\textcolor{\OtherColor}{\&}}%
+\newcommand{\BulletColor}{\textcolor{\OtherColor}{\textbullet}}
+
+\newcommand{\TwoAuthorBullet}{\AuthorA\ \textbullet\ \AuthorB}%
+\newcommand{\TwoAuthor}{\AuthorA\ \& \AuthorB}%
+\newcommand{\TwoAuthorShort}{\AuthorAShort\ \& \AuthorBShort}
+
+\newcommand{\TwoAuthorBulletColor}{\AuthorAColor\ \BulletColor\
+  \AuthorBColor}%
+\newcommand{\TwoAuthorColor}{\AuthorAColor\ \AndColor\ \AuthorBColor}%
+\newcommand{\TwoAuthorShortColor}{\AuthorAShortColor\ \AndColor\
+  \AuthorBShortColor}
+
+\newcommand{\ThreeAuthorBullet}{\AuthorA\ \textbullet\ \AuthorB\
+  \textbullet\ \AuthorC}%
+\newcommand{\ThreeAuthor}{\AuthorA, \AuthorB, \& \AuthorC}%
+\newcommand{\ThreeAuthorShort}{\AuthorAShort, \AuthorBShort, \&
+  \AuthorCShort}
+
+\newcommand{\ThreeAuthorBulletColor}{\AuthorAColor\ \BulletColor\
+  \AuthorBColor\ \BulletColor\ \AuthorCColor}%
+\newcommand{\ThreeAuthorColor}{\AuthorAColor, \AuthorBColor, \AndColor\
+  \AuthorCColor}%
+\newcommand{\ThreeAuthorShortColor}{\AuthorAShortColor,
+  \AuthorBShortColor, \AndColor\ \AuthorCShortColor}
+
+\newcommand{\FourAuthorBullet}{\AuthorA\ \textbullet\ \AuthorB\
+  \textbullet\ \AuthorC\ \textbullet\ \AuthorD}%
+\newcommand{\FourAuthor}{\AuthorA, \AuthorB, \AuthorC, \& \AuthorD}%
+\newcommand{\FourAuthorShort}{\AuthorAShort, \AuthorBShort,
+  \AuthorCShort, \& \AuthorDShort}
+
+\newcommand{\FourAuthorBulletColor}{\AuthorAColor\ \BulletColor\
+  \AuthorBColor\ \BulletColor\ \AuthorCColor\ \BulletColor\
+  \AuthorDColor}%
+\newcommand{\FourAuthorColor}{\AuthorAColor, \AuthorBColor,
+  \AuthorCColor, \AndColor\ \AuthorDColor}%
+\newcommand{\FourAuthorShortColor}{\AuthorAShortColor,
+  \AuthorBShortColor, \AuthorCShortColor, \AndColor\ \AuthorDShortColor}
+
+% For running headers with one author and a title:
+\newcommand{\OneAuthorHeader}{%
+  \setlength{\headheight}{13.59999pt}%
+  \fancyhead[EL,OR]{\small\thepage}%
+  \fancyhead[ER]{\small\AuthorAShortColor}%
+  \fancyhead[OL]{\small\textcolor{\HeadingsColor}{\sffamily
+      \TitleOfPaperInHeader}}%
+}
+
+% For running headers with two authors and a title:
+\newcommand{\TwoAuthorHeader}{%
+  \setlength{\headheight}{13.59999pt}%
+  \fancyhead[EL,OR]{\small\thepage}%
+  \fancyhead[ER]{\small\TwoAuthorShortColor}%
+  \fancyhead[OL]{\small\textcolor{\HeadingsColor}{\sffamily
+      \TitleOfPaperInHeader}}%
+}
+
+% For running headers with three authors and a title:
+\newcommand{\ThreeAuthorHeader}{%
+  \setlength{\headheight}{13.59999pt}%
+  \fancyhead[EL,OR]{\small\thepage}%
+  \fancyhead[ER]{\small\ThreeAuthorShortColor}%
+  \fancyhead[OL]{\small\textcolor{\HeadingsColor}{\sffamily
+      \TitleOfPaperInHeader}}%
+}
+
+% For running headers with four authors and a title:
+\newcommand{\FourAuthorHeader}{%
+  \setlength{\headheight}{13.59999pt}%
+  \fancyhead[EL,OR]{\small\thepage}%
+  \fancyhead[ER]{\small\FourAuthorShortColor}%
+  \fancyhead[OL]{\small\textcolor{\HeadingsColor}{\sffamily
+      \TitleOfPaperInHeader}}%
+}
+
+% For the first and last pages:
+\newcommand{\FirstPage}{\pageref{PageFirst}}%
+\newcommand{\LastPage}{\pageref{PageLast}}
+
+% Some useful commands:
+\newcommand{\EISS}{EISS}%
+\newcommand{\EISSeditorA}{A B}%
+\newcommand{\EISSeditorB}{C D}%
+\newcommand{\EISSeditorC}{E F}%
+\newcommand{\EISSeditorAColor}{\textcolor{\AuthorsColor}{\EISSeditorA}}%
+\newcommand{\EISSeditorBColor}{\textcolor{\AuthorsColor}{\EISSeditorB}}%
+\newcommand{\EISSeditorCColor}{\textcolor{\AuthorsColor}{\EISSeditorC}}%
+\newcommand{\EISSed}{(ed.)}%
+\newcommand{\EISSeds}{(eds.)}%
+\newcommand{\EISSedColor}{\textcolor{\OtherColor}{\EISSed}}%
+\newcommand{\EISSedsColor}{\textcolor{\OtherColor}{\EISSeds}}%
+\newcommand{\EISSeditorAEd}{\EISSeditorA\ \EISSed}%
+\newcommand{\EISSeditorAColorEdColor}{\EISSeditorAColor\ \EISSedColor}%
+\newcommand{\EISSeditorABEd}{\EISSeditorA\ \& \EISSeditorB\ \EISSeds}%
+\newcommand{\EISSeditorABCEd}{\EISSeditorA\, \EISSeditorB\ \~\& \EISSeditorC\ \EISSeds}%
+\newcommand{\EISSeditorABColorEdColor}{\EISSeditorAColor\ \AndColor\
+  \EISSeditorBColor\ \EISSedsColor}%
+\newcommand{\EISSeditorABCColorEdColor}{\EISSeditorAColor{}, \EISSeditorBColor \,\AndColor\
+  \EISSeditorCColor\ \EISSedsColor}%
+% Will eventually be replaced by a visible logo, but blank for now:
+\newcommand{\EISSlogo}{\includegraphics{eiss13_logo_blank}}%
+\newcommand{\EISSplace}{Paris}%
+\newcommand{\EISSpublisher}{CSSP}%
+\newcommand{\EISStitle}{Empirical Issues in Syntax and Semantics}%
+\newcommand{\EISSurl}{http://www.cssp.cnrs.fr/eiss14/}%
+\newcommand{\EISSvol}{14}%
+\newcommand{\EISSyear}{202X}%
+\newcommand{\EISStitlevol}{\EISStitle\ \EISSvol}%
+\newcommand{\EISStitlevolpdfinfo}{\EISStitlevol\ (\EISS\ \EISSvol)}
+
+% Introduce a new length for the header on the first page: 
+\newlength{\FirstHeaderHeight}
+
+% Need to increase the height of the header on the first page in order
+% to accommodate the logo (this is the value suggested by fancyhdr for
+% the EPS logo, which is very slightly taller than the PDF logo):
+\setlength{\FirstHeaderHeight}{22.41753pt}
+
+% For the fancy header on the first page:
+\fancypagestyle{HeaderFancy}{%
+  \setlength{\headheight}{\FirstHeaderHeight}%
+  \fancyhead[L]{\EISSlogo}%
+  \fancyhead[R]{\small\thepage}%
+}
+
+% For the title in the PDF metadata:
+\newcommand{\TitleOfPaperpdfinfo}{\TitleOfPaper}
+
+% Set the author preliminaries and PDF metadata for one author:
+\newcommand{\OneAuthorPrelim}{%
+  \OneAuthorHeader%
+  \ifpdf%
+  \pdfinfo{%
+    /Author (\AuthorA)%
+    /Keywords (\Keywordpdfinfo)%
+    /Subject (\EISSyear. In \EISSeditorABCEd,
+    \EISStitlevolpdfinfo. \EISSplace: \EISSpublisher. \EISSurl)%
+    /Title (\TitleOfPaperpdfinfo)%
+  }%
+  \else%
+  \special{%
+    ! /pdfmark where {pop} {userdict /pdfmark /cleartomark load put}
+    ifelse [%
+    /Author (\AuthorA)%
+    /Keywords (\Keywordpdfinfo)%
+    /Subject (\EISSyear. In \EISSeditorABCEd,
+    \EISStitlevolpdfinfo. \EISSplace: \EISSpublisher. \EISSurl)%
+    /Title (\TitleOfPaperpdfinfo)%
+    /DOCINFO pdfmark%
+  }%
+  \fi%
+}
+
+% Set the author preliminaries and PDF metadata for two authors:
+\newcommand{\TwoAuthorPrelim}{%
+  \TwoAuthorHeader%
+  \ifpdf%
+  \pdfinfo{%
+    /Author (\TwoAuthor)%
+    /Keywords (\Keywordpdfinfo)%
+    /Subject (\EISSyear. In \EISSeditorABCEd,
+    \EISStitlevolpdfinfo. \EISSplace: \EISSpublisher. \EISSurl)%
+    /Title (\TitleOfPaperpdfinfo)%
+  }%
+  \else%
+  \special{%
+    ! /pdfmark where {pop} {userdict /pdfmark /cleartomark load put}
+    ifelse [%
+    /Author (\TwoAuthor)%
+    /Keywords (\Keywordpdfinfo)%
+    /Subject (\EISSyear. In \EISSeditorABCEd,
+    \EISStitlevolpdfinfo. \EISSplace: \EISSpublisher. \EISSurl)%
+    /Title (\TitleOfPaperpdfinfo)%
+    /DOCINFO pdfmark%
+  }%
+  \fi%
+}
+
+% Set the author preliminaries and PDF metadata for three authors:
+\newcommand{\ThreeAuthorPrelim}{%
+  \ThreeAuthorHeader%
+  \ifpdf%
+  \pdfinfo{%
+    /Author (\ThreeAuthor)%
+    /Keywords (\Keywordpdfinfo)%
+    /Subject (\EISSyear. In \EISSeditorABCEd,
+    \EISStitlevolpdfinfo. \EISSplace: \EISSpublisher. \EISSurl)%
+    /Title (\TitleOfPaperpdfinfo)%
+  }%
+  \else%
+  \special{%
+    ! /pdfmark where {pop} {userdict /pdfmark /cleartomark load put}
+    ifelse [%
+    /Author (\ThreeAuthor)%
+    /Keywords (\Keywordpdfinfo)%
+    /Subject (\EISSyear. In \EISSeditorABCEd,
+    \EISStitlevolpdfinfo. \EISSplace: \EISSpublisher. \EISSurl)%
+    /Title (\TitleOfPaperpdfinfo)%
+    /DOCINFO pdfmark%
+  }%
+  \fi%
+}
+
+% Set the author preliminaries and PDF metadata for four authors:
+\newcommand{\FourAuthorPrelim}{%
+  \FourAuthorHeader%
+  \ifpdf%
+  \pdfinfo{%
+    /Author (\FourAuthor)%
+    /Keywords (\Keywordpdfinfo)%
+    /Subject (\EISSyear. In \EISSeditorABCEd,
+    \EISStitlevolpdfinfo. \EISSplace: \EISSpublisher. \EISSurl)%
+    /Title (\TitleOfPaperpdfinfo)%
+  }%
+  \else%
+  \special{%
+    ! /pdfmark where {pop} {userdict /pdfmark /cleartomark load put}
+    ifelse [%
+    /Author (\FourAuthor)%
+    /Keywords (\Keywordpdfinfo)%
+    /Subject (\EISSyear. In \EISSeditorABCEd,
+    \EISStitlevolpdfinfo. \EISSplace: \EISSpublisher. \EISSurl)%
+    /Title (\TitleOfPaperpdfinfo)%
+    /DOCINFO pdfmark%
+  }%
+  \fi%
+}
+
+% Set the author formatting for the first page according to the number
+% of authors:
+\newcommand{\FirstPageOneAuthor}{%
+  \thispagestyle{HeaderFancy}%
+  \MakeTitleOneAuthor%
+}
+
+\newcommand{\FirstPageTwoAuthor}{%
+  \thispagestyle{HeaderFancy}%
+  \MakeTitleTwoAuthor%
+}
+
+\newcommand{\FirstPageThreeAuthor}{%
+  \thispagestyle{HeaderFancy}%
+  \MakeTitleThreeAuthor%
+}
+
+\newcommand{\FirstPageFourAuthor}{%
+  \thispagestyle{HeaderFancy}%
+  \MakeTitleFourAuthor%
+}
+
+% Make the author according to the number of authors:
+\newcommand{\MakeOneAuthor}{%
+  \OneAuthorPrelim%
+  \FirstPageOneAuthor%
+}
+
+\newcommand{\MakeTwoAuthor}{%
+  \TwoAuthorPrelim%
+  \FirstPageTwoAuthor%
+}
+
+\newcommand{\MakeThreeAuthor}{%
+  \ThreeAuthorPrelim%
+  \FirstPageThreeAuthor%
+}
+
+\newcommand{\MakeFourAuthor}{%
+  \FourAuthorPrelim%
+  \FirstPageFourAuthor%
+}
+
+% Set the author information according to the number of authors:
+\newcommand{\OneAuthorInfo}{%
+  \noindent \textcolor{\RuleColor}{\rule{\textwidth}{0.4pt}}
+
+  {\raggedright\scriptsize
+
+    \AuthorAShortColor, \AuthorAAffiliation, \SpUrl{\AuthorAUrl}
+
+    \vspace{2mm} In \EISSeditorABCColorEdColor,
+    \textcolor{\HeadingsColor}{\sffamily \EISStitlevol},
+    \FirstPage--\LastPage. \EISSplace: \EISSpublisher. \
+    \SpUrl{\EISSurl}
+
+    \textcopyright\ \EISSyear\ \AuthorAColor
+
+  }%
+}
+
+\newcommand{\TwoAuthorInfo}{%
+\noindent \textcolor{\RuleColor}{\rule{\textwidth}{0.4pt}}
+
+  {\raggedright\scriptsize
+
+    \AuthorAShortColor, \AuthorAAffiliation,
+    \SpUrl{\AuthorAUrl}
+
+    \AuthorBShortColor, \AuthorBAffiliation, \SpUrl{\AuthorBUrl}
+
+    \vspace{2mm} In \EISSeditorABColorEdColor,
+    \textcolor{\HeadingsColor}{\sffamily \EISStitlevol},
+    \FirstPage--\LastPage. \EISSplace: \EISSpublisher. \
+    \SpUrl{\EISSurl}
+
+    \textcopyright\ \EISSyear\ \TwoAuthorColor
+
+  }%
+}
+
+\newcommand{\ThreeAuthorInfo}{%
+  \noindent \textcolor{\RuleColor}{\rule{\textwidth}{0.4pt}}
+
+  {\raggedright\scriptsize
+
+    \AuthorAShortColor, \AuthorAAffiliation, \SpUrl{\AuthorAUrl}
+
+    \AuthorBShortColor, \AuthorBAffiliation, \SpUrl{\AuthorBUrl}
+
+    \AuthorCShortColor, \AuthorCAffiliation, \SpUrl{\AuthorCUrl}
+
+    \vspace{2mm} In \EISSeditorABColorEdColor,
+    \textcolor{\HeadingsColor}{\sffamily \EISStitlevol},
+    \FirstPage--\LastPage. \EISSplace: \EISSpublisher. \
+    \SpUrl{\EISSurl}
+
+    \textcopyright\ \EISSyear\ \ThreeAuthorColor
+
+  }%
+}
+
+\newcommand{\FourAuthorInfo}{%
+  \noindent \textcolor{\RuleColor}{\rule{\textwidth}{0.4pt}}
+
+  {\raggedright\scriptsize
+
+    \AuthorAShortColor, \AuthorAAffiliation, \SpUrl{\AuthorAUrl}
+
+    \AuthorBShortColor, \AuthorBAffiliation, \SpUrl{\AuthorBUrl}
+
+    \AuthorCShortColor, \AuthorCAffiliation, \SpUrl{\AuthorCUrl}
+
+    \AuthorDShortColor, \AuthorDAffiliation, \SpUrl{\AuthorDUrl}
+
+    \vspace{2mm} In \EISSeditorABColorEdColor,
+    \textcolor{\HeadingsColor}{\sffamily \EISStitlevol},
+    \FirstPage--\LastPage. \EISSplace: \EISSpublisher. \
+    \SpUrl{\EISSurl}
+
+    \textcopyright\ \EISSyear\ \FourAuthorColor
+
+  }%
+}
+
+% Make the title with one author:
+\newcommand{\MakeTitleOneAuthor}{%
+  \noindent{\raggedright
+
+    \bfseries\sffamily\Large\textcolor{\HeadingsColor}{\TitleOfPaper}
+
+    \vspace{3mm}\noindent\rmfamily\small\AuthorAColor
+
+  }
+
+  \reducedparagraph{Abstract}{\AbstractOfPaper}
+
+  {\raggedright
+
+    \reducedparagraph{Keywords}{\KeywordBullet}
+
+  }%
+
+  \OneAuthorInfo
+
+}
+
+% Make the title with two authors:
+\newcommand{\MakeTitleTwoAuthor}{%
+  \noindent{\raggedright
+
+    \bfseries\sffamily\Large\textcolor{\HeadingsColor}{\TitleOfPaper}
+
+    \vspace{3mm}\noindent\rmfamily\small\TwoAuthorBulletColor
+
+  }
+
+  \reducedparagraph{Abstract}{\AbstractOfPaper}
+
+  {\raggedright
+
+    \reducedparagraph{Keywords}{\KeywordBullet}
+
+  }%
+
+  \TwoAuthorInfo
+
+}
+
+% Make the title with three authors:
+\newcommand{\MakeTitleThreeAuthor}{%
+  \noindent{\raggedright
+
+    \bfseries\sffamily\Large\textcolor{\HeadingsColor}{\TitleOfPaper}
+
+    \vspace{3mm}\noindent\rmfamily\small\ThreeAuthorBulletColor
+
+  }
+
+  \reducedparagraph{Abstract}{\AbstractOfPaper}
+
+  {\raggedright
+
+    \reducedparagraph{Keywords}{\KeywordBullet}
+
+  }%
+
+  \ThreeAuthorInfo
+
+}
+
+% Make the title with four authors:
+\newcommand{\MakeTitleFourAuthor}{%
+  \noindent{\raggedright
+
+    \bfseries\sffamily\Large\textcolor{\HeadingsColor}{\TitleOfPaper}
+
+    \vspace{3mm}\noindent\rmfamily\small\FourAuthorBulletColor
+
+  }
+
+  \reducedparagraph{Abstract}{\AbstractOfPaper}
+
+  {\raggedright
+
+    \reducedparagraph{Keywords}{\KeywordBullet}
+
+  }%
+
+  \FourAuthorInfo
+
+}
+
+% A command for setting the color of \alert{}:
+\newcommand{\AlertColor}{FRred}
+
+% A command for introducing new terms in color (the name "\alert" is
+% inspired by beamer :-) ):
+\newcommand{\alert}[1]{{\color{\AlertColor} #1}}
+
+% To add color to the footnote rule (taken from the LaTeX source; added
+% color):
+\def\footnoterule{{\color{\RuleColor}\kern-3\p@ \hrule \@width 2in \kern
+    2.6\p@}}% \hrule is 0.4pt high
+
+% linguex and expex are two well-known packages for linguistic examples
+% For linguex:
+\newcommand{\UseLinguex}{%
+  \RequirePackage{linguex}%
+  \renewcommand{\firstrefdash}{} % For (1a) instead of (1-a)
+  \setlength{\Extopsep}{3mm}%
+  \let\eachwordone=\it %
+}
+% For expex:
+\newcommand{\UseExpex}{%
+  \RequirePackage{expex}%
+  \lingset{interpartskip=0mm,aboveexskip=3mm,belowexskip=3mm,aboveglftskip=0mm,glhangstyle=none}%
+  \gathertags %
+}
+% For expex with the font size \small:
+\newcommand{\UseExpexSmall}{%
+  \RequirePackage{expex}%
+  \lingset{interpartskip=1mm,aboveexskip=3mm,belowexskip=3mm,aboveglftskip=0mm,glhangstyle=none,everyex=\small,exnoformat=\small
+    (X)}%
+  \gathertags %
+}
+
+% Some more settings before we finish:
+\setlength{\parindent}{5mm}
+
+\setlength{\textfloatsep}{3mm}
+\setlength{\floatsep}{3mm}
+\setlength{\intextsep}{3mm}
+
+\frenchspacing
+
+\raggedbottom
+
+%%%%%%%%%%
+%% The official end of this file
+%%%%%%%%%%

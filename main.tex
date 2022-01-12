@@ -1,0 +1,483 @@
+
+% AUTHOR_master.tex
+% Prepared by C. Pinon (cjpinon@implicature.xyz) for EISS 13 (see
+% https://implicature.xyz/eiss13/)
+% 2020-12-30
+% 2020-02-02
+
+% This is the master file for your paper. This is the file that you
+% should compile.
+
+\documentclass[a5paper,12pt,twoside]{article}% Please don't change
+
+\usepackage{eiss}% Please don't change
+
+% For your information, eiss.sty explicitly requires the following
+% publicly available packages (most of which are probably already
+% installed on recent LaTeX systems). Please don't reload these
+% packages!
+
+% (Note that you can latex the file check-for-packages.tex in order to
+% check whether these packages are installed on your system.)
+
+% cabin
+% calc
+% caption
+% datetime
+% draftwatermark
+% enumitem
+% fancyhdr
+% fontenc
+% fourier
+% geometry
+% graphicx
+% ifpdf
+% natbib
+% quoting
+% textcomp
+% theorem
+% titlesec
+% url
+% xcolor
+% zlmtt
+
+%%%%%%%%%%
+%% In order to use this file as intended, you need to complete the
+%% following 12 steps. (It should go quickly!)
+%%%%%%%%%%
+
+%%%%%%%%%%
+%% Step 1 (The font)
+%%%%%%%%%%
+
+% The official font for EISS 13 is Utopia, which is preselected:
+
+\UseUtopia
+
+% Alternative fonts are Latin Modern or Times:
+
+% \UseLatinModern
+% \UseTimes
+
+% (Don't select Latin Modern or Times for EISS 13 unless the use of
+% Utopia presents a problem. Note that ONLY ONE of these three font
+% options should be selected.)
+
+%%%%%%%%%%
+%% Step 2 (The input encoding)
+%%%%%%%%%%
+
+% Note: If you're using a version of LaTeX from 2018/04/01 or later,
+% then UTF-8 is the default input encoding and it's no longer necessary
+% to set the input encoding to utf8 explicitly.
+
+% If you're directly inserting only ASCII (basically: non-accented)
+% characters, then you don't have to explicitly set an input encoding,
+% and you can go to step 3! If you're directly inserting some non-ASCII
+% (accented) characters, then you have to choose an input
+% encoding. Nowadays, the standard choice of non-ASCII input encoding is
+% utf8. If you want to use this or another input encoding, uncomment the
+% following line and specify the encoding that you want to use (and then
+% make sure that you save your file in this encoding):
+
+% \usepackage[utf8]{inputenc}
+
+% (Some popular legacy encodings are latin1, latin2, latin9, cp1252, and
+% cp1250.)
+
+%%%%%%%%%%
+%% Step 3 (The title; there are potentially three substeps)
+%%%%%%%%%%
+
+%%%%%%%%%%
+%% Step 3a (The title of the paper on the first page)
+%%%%%%%%%%
+
+% Uncomment the following line and specify the title of your paper
+% (forced line breaks with "\\" are allowed but not encouraged):
+
+\renewcommand{\TitleOfPaper}{This Title Needs Changed}
+
+%%%%%%%%%%
+%% Step 3b (The title of the paper in the PDF metadata)
+%%%%%%%%%%
+
+% If the title of the paper on the first page (specified in step 3a)
+% contains "\\" or an emphasized/italicized expression, then uncomment
+% the following line and specify the title of the paper without "\\" and
+% without an emphasized/italicized expression:
+
+% \renewcommand{\TitleOfPaperpdfinfo}{The title of the paper without "\\" or emphasis/italics}
+
+% (If the title of the paper specified in step 3a doesn't contain "\\"
+% or emphasis/italics, then there's no need to set this and you can go
+% to step 3c!)
+
+%%%%%%%%%%
+%% Step 3c (The title of the paper in the running headers, if different)
+%%%%%%%%%%
+
+% If the title of the paper in the running headers differs from the
+% title of the paper on the first page (specified in step 3a), then
+% uncomment the following line and specify the title of the paper in the
+% headers (note that no forced line breaks are allowed here):
+
+% \renewcommand{\TitleOfPaperInHeader}{The title in the headers}
+
+% (Normally, the title of the paper in the running headers is identical
+% to the title of the paper on the first page, in which case there's no
+% need to set this. But sometimes, the title of the paper in the running
+% headers needs to be shortened a bit, in which case the shortened title
+% should be specified here.)
+
+%%%%%%%%%%
+%% Step 4 (The authors; there are up to four substeps, depending on the
+%% number of authors)
+%%%%%%%%%%
+
+%%%%%%%%%%
+%% Step 4a (The FIRST author)
+%%%%%%%%%%
+
+% Uncomment the following line and specify the first name of the first
+% author:
+
+\renewcommand{\AuthorAFirstName}{Anonymous}
+
+% Uncomment the following line and specify the first initial (letter) of
+% the first name of the first author:
+
+\renewcommand{\AuthorAFirstInitial}{A}
+
+% In certain cases, it may be more appropriate to give the first initial
+% as a combination of two letters: an upper case letter followed
+% immediately by a lower case letter. For example, if the first name is
+% "Szilvia", the first initial would best be "Sz" (without the quotes,
+% of course).
+
+% Uncomment the following line and specify the last (family) name of the
+% first author:
+
+\renewcommand{\AuthorALastName}{Coward}
+
+% Uncomment the following line and specify the affiliation of the first
+% author (just the name of the institution):
+
+\renewcommand{\AuthorAAffiliation}{Utopian University of Atlantis}
+
+% Uncomment one of the following lines and specify EITHER the web page
+% OR the email address of the first author (but not both; a web page is
+% preferred).
+
+% NOTE: If you want to use a tilde (~), put "\noexpand~" instead of "~"
+% (without the quotes). This applies to the URLs of the other authors as
+% well.
+
+% \renewcommand{\AuthorAUrl}{http://web-page-author-1/}
+\renewcommand{\AuthorAUrl}{anonymous.coward@utopian-atlantis.edu}
+
+%%%%%%%%%%
+%% Step 4b (The SECOND author, if there is one; if not, go to step 5!)
+%%%%%%%%%%
+
+% Uncomment the following line and specify the first name of the second
+% author:
+
+% \renewcommand{\AuthorBFirstName}{First-name-author-2}
+
+% Uncomment the following line and specify the first initial (letter) of
+% the first name of the second author:
+
+% \renewcommand{\AuthorBFirstInitial}{First-initial-first-name-author-2}
+
+% Uncomment the following line and specify the last (family) name of the
+% second author:
+
+% \renewcommand{\AuthorBLastName}{Last-name-author-2}
+
+% Uncomment the following line and specify the affiliation of the second
+% author (just the name of the institution):
+
+% \renewcommand{\AuthorBAffiliation}{Affiliation-author-2}
+
+% Uncomment one of the following lines and specify EITHER the web page
+% OR the email address of the second author (but not both; a web page is
+% preferred).
+
+% \renewcommand{\AuthorBUrl}{http://web-page-author-2/}
+% \renewcommand{\AuthorBUrl}{author-2@university.edu}
+
+%%%%%%%%%%
+%% Step 4c (The THIRD author, if there is one; if not, go to step 5!)
+%%%%%%%%%%
+
+% Uncomment the following line and specify the first name of the third
+% author:
+
+% \renewcommand{\AuthorCFirstName}{First-name-author-3}
+
+% Uncomment the following line and specify the first initial (letter) of
+% the first name of the third author:
+
+% \renewcommand{\AuthorCFirstInitial}{First-initial-first-name-author-3}
+
+% Uncomment the following line and specify the last (family) name of the
+% third author:
+
+% \renewcommand{\AuthorCLastName}{Last-name-author-3}
+
+% Uncomment the following line and specify the affiliation of the third
+% author (just the name of the institution):
+
+% \renewcommand{\AuthorCAffiliation}{Affiliation-author-3}
+
+% Uncomment one of the following lines and specify EITHER the web page
+% OR the email address of the third author (but not both; a web page is
+% preferred).
+
+% \renewcommand{\AuthorCUrl}{http://web-page-author-3/}
+% \renewcommand{\AuthorCUrl}{author-3@university.edu}
+
+%%%%%%%%%%
+%% Step 4d (The FOURTH author, if there is one; if not, go to step 5!)
+%%%%%%%%%%
+
+% Uncomment the following line and specify the first name of the fourth
+% author:
+
+% \renewcommand{\AuthorDFirstName}{First-name-author-4}
+
+% Uncomment the following line and specify the first initial (letter) of
+% the first name of the fourth author:
+
+% \renewcommand{\AuthorDFirstInitial}{First-initial-first-name-author-4}
+
+% Uncomment the following line and specify the last (family) name of the
+% fourth author:
+
+% \renewcommand{\AuthorDLastName}{Last-name-author-4}
+
+% Uncomment the following line and specify the affiliation of the fourth
+% author (just the name of the institution):
+
+% \renewcommand{\AuthorDAffiliation}{Affiliation-author-4}
+
+% Uncomment one of the following lines and specify EITHER the web page
+% OR the email address of the third author (but not both; a web page is
+% preferred).
+
+% \renewcommand{\AuthorDUrl}{http://web-page-author-4/}
+% \renewcommand{\AuthorDUrl}{author-4@university.edu}
+
+%%%%%%%%%%
+%% Step 5 (Linguistic examples)
+%%%%%%%%%%
+
+% If you want to use phonetic (IPA) symbols in your linguistic examples,
+% uncomment the following line to use the package tipa:
+
+% \UseTipa
+
+% linguex and expex are two well-known packages for formatting
+% linguistic examples. If you wish to use one of these, uncomment the
+% appropriate line below:
+
+% \UseLinguex
+
+% \UseExpex
+
+% If your paper contains many glossed examples, you may choose expex
+% with a smaller font size instead in order to save some space:
+
+% \UseExpexSmall
+
+% But note that standard choice is \UseExpex and not \UseExpexSmall.
+
+% If you prefer to use a different package for formatting linguistic
+% examples, please specify it in the next step.
+
+%%%%%%%%%%
+%% Step 6 (Packages or definitions that you need)
+%%%%%%%%%%
+
+% Include here any \usepackage statements or definitions that you need
+% for this paper, but please load only those packages that you REALLY
+% NEED (and recall the list of already loaded packages given
+% above). Note that the fonts, margins, etc. have already been set, so
+% please don't try to override these.
+
+% Please don't use hyperref! But remember to use \url{} for any URLs in
+% your main text!
+
+% Some suggestions:
+
+% For extra LaTeX math symbols:
+
+% \usepackage{latexsym}
+
+% A well-known package for drawing syntactic trees:
+
+% \usepackage[nocenter]{qtree}
+
+% Add packages and definitions (again, only those that you really need
+% for this paper!):
+
+% \usepackage{}
+
+% \newcommand{}{}
+
+%%%%%%%%%%
+%% Nothing more to do here -- go to step 7!
+%%%%%%%%%%
+
+% Eventually we'll add a visible logo (please don't change):
+% \renewcommand{\EISSlogo}{\includegraphics{eiss13_logo}}
+
+% For the watermarks (until the final version):
+\usepackage[firstpage]{draftwatermark}% Please don't change
+% \usepackage{draftwatermark}%
+\SetWatermarkFontSize{2.6cm}%
+\SetWatermarkText{\shortstack{Draft\\ \today}}%
+% \SetWatermarkText{\shortstack{Example\\ \today}}%
+% \SetWatermarkText{\shortstack{Preview\\ \today}}
+
+%% Set up the bibliography:
+\bibliography{AUTHOR_bib.bib}
+
+\begin{document}% Please don't change
+
+\label{PageFirst}% Please don't change
+
+% We'd prefer not to put potentially misleading page numbers in the
+% reference information on the first page until we know what the final
+% page numbers will be, so for the time being we'll use 0 to 00:
+
+\renewcommand{\FirstPage}{0}% Please don't change
+\renewcommand{\LastPage}{00}
+
+% Once we know which page your paper begins on, we'll uncomment the
+% following line and set the value accordingly (please don't change):
+
+% \setcounter{page}{137}
+
+%%%%%%%%%%
+%% Step 7 (The abstract)
+%%%%%%%%%%
+
+% Uncomment the following line and give your abstract (if necessary,
+% your abstract may contain more than one paragraph, but please try to
+% make it neither too long nor too short!):
+
+\renewcommand{\AbstractOfPaper}{The abstract of your paper goes here.}
+
+%%%%%%%%%%
+%% Step 8 (The keywords; there are potentially three substeps)
+%%%%%%%%%%
+
+%%%%%%%%%%
+%% Step 8a (Specify the keywords)
+%%%%%%%%%%
+
+% Uncomment at least the first FOUR of the following lines and specify
+% your keywords. Please use AT LEAST FOUR and AT MOST EIGHT
+% keywords. (Yes, this is kind of strict, sorry!)
+
+% \renewcommand{\KeywordOne}{Change}
+% \renewcommand{\KeywordTwo}{These}
+% \renewcommand{\KeywordThree}{Keywords}
+% \renewcommand{\KeywordFour}{Pulease}
+% \renewcommand{\KeywordFive}{Keyword5}
+% \renewcommand{\KeywordSix}{Keyword6}
+% \renewcommand{\KeywordSeven}{Keyword7}
+% \renewcommand{\KeywordEight}{Keyword8}
+
+%%%%%%%%%%
+%% Step 8b (Specify the keywords in the PDF metainfo)
+%%%%%%%%%%
+
+% IF any of the keywords just specified (in Step 8a) is
+% EMPHASIZED/ITALICIZED, then give those keyword(s) again by
+% uncommenting the relevant line(s) below and specifying those
+% keyword(s) without emphasis/italics. If none of your keywords are
+% emphasized/italicized, there's no need to set this and you can go to
+% step 8c!
+
+% \renewcommand{\KeywordOnepdfinfo}{Keyword1}
+% \renewcommand{\KeywordTwopdfinfo}{Keyword2}
+% \renewcommand{\KeywordThreepdfinfo}{Keyword3}
+% \renewcommand{\KeywordFourpdfinfo}{Keyword4}
+% \renewcommand{\KeywordFivepdfinfo}{Keyword5}
+% \renewcommand{\KeywordSixpdfinfo}{Keyword6}
+% \renewcommand{\KeywordSevenpdfinfo}{Keyword7}
+% \renewcommand{\KeywordEightpdfinfo}{Keyword8}
+
+%%%%%%%%%%
+%% Step 8c (Specify the number of keywords)
+%%%%%%%%%%
+
+% Uncomment exactly one of the following lines, depending on how many
+% keywords you specified:
+
+\UseFourKeyword
+% \UseFiveKeyword
+% \UseSixKeyword
+% \UseSevenKeyword
+% \UseEightKeyword
+
+%%%%%%%%%%
+%% Step 9 (The acknowledgments)
+%%%%%%%%%%
+
+% Uncomment the following line and give your acknowledgments:
+
+% \renewcommand{\Thanks}{Your acknowledgments go here.}
+
+%%%%%%%%%%
+%% Step 10 (Make the title, authors, etc.)
+%%%%%%%%%%
+
+% Uncomment exactly one of the following lines, depending on the number
+% of authors you specified:
+
+\MakeOneAuthor
+% \MakeTwoAuthor
+% \MakeThreeAuthor
+% \MakeFourAuthor
+
+%%%%%%%%%%
+%% Step 11 (Input the author body-file)
+%%%%%%%%%%
+
+% Uncomment the following line and specify the name of the author
+% body-file to be inserted:
+
+\input{AUTHOR_body.tex}
+
+%%%%%%%%%%
+%% Nothing more to do here -- go to step 12!
+%%%%%%%%%%
+
+% The acknowledgments appear just before the references:
+
+\MakeThanks% Please don't change
+
+%%%%%%%%%%
+%% Step 12 (Input the author refs-file)
+%%%%%%%%%%
+
+% Uncomment the following line and specify the name of the author
+% refs-file to be inserted:
+
+\input{AUTHOR_refs.tex}
+
+%%%%%%%%%%
+%% Nothing more to do in this file! :-)
+%%%%%%%%%%
+
+\label{PageLast}% Please don't change
+
+\end{document}% Please don't change
+
+%%%%%%%%%%
+%% The official end of this file
+%%%%%%%%%%
