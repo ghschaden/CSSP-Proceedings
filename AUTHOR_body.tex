@@ -58,13 +58,13 @@ You can also make a more involved example, with arrows:
 \ex.  \label{ex:rp-structure} 
 \footnotesize{%
 \begin{forest} for tree={l=10mm, l sep=0}
-   [AuxP 
+   [AuxP, name=top 
       [beP [RP 
               [DP [John] ] 
               [R$'$ [withP  
                        [RP [DP [hair] ] 
                            [R$'$ [AP [VP ] 
-                                     [A [ colored ] ] ] 
+                                     [A [ colored, name=cellar ] ] ] 
                                  [R] ] ] 
                         [with, name=source] ] 
                     [R, name=c1] ] ] 
@@ -73,6 +73,8 @@ You can also make a more involved example, with arrows:
     % and now, we draw some arrows  
    \draw[->,color=red,very thick,dotted] (source) to[out=east,in=south east] (c1);
    \draw[->,color=blue,ultra thick,dashed] (c1) to[out=east,in=south east] (c2);
+   \draw[-{Latex[length=2.5mm]},color=purple,ultra thick] (cellar) to[out=east,in=east]  
+                        node [below, sloped] (TextNode2) {because why the hell not} (top);
 \end{forest}}
 
 \citet[451]{Szadrowsky:1936} claims something, but I am not sure whether \citet[70]{Kamp:1973} would agree (or \citealt[50]{Searle:1964}, by that matter).
