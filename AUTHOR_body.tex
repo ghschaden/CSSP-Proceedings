@@ -19,7 +19,101 @@ syntax (or the other way around, see \citealt{Kamp:1973,Searle:1964}) \ldots
 
 Yes you can śačĉḥ -- ţŷpe şōmê wild Üñïçôđė.
 
-For examples, you can use either \textbf{linguex} or \textbf{expex}; please read the \texttt{main.tex} file in order to configure everything to your convenience.
+For examples, use \textbf{linguex}, and for glossing morphological categories, please refer to the Leipzig Glossing Rules.
+
+\exg. 
+win er der Namen Gottes het usgsprochn-a ghabe\\
+when he the name.\textsc{m.sg} God.\textsc{gen} has pronounced-\textsc{m.sg} had\\
+%\glt 
+`once he had pronounced the name of God'
+
+For examples with several subexamples:
+
+\ex. \label{ex:1}\a. \label{ex:2}First example
+\b. Second
+\bg. Dies ist ein schönes Beispiel mit einer Glose.\\
+This is a beautiful example with a gloss.\\
+\a. `Some translation'
+\b. `Some other'
+\z.
+\b. Fourth
+
+You can refer back to examples like \ref{ex:1} and \ref{ex:2}.
+
+In order to make trees, use the \textbf{forest} package.
+
+% LaTeX doesn't care how you arrange the tree in the source code, but for your won sake, you want probably want to write something as follows:
+\ex. \begin{forest}
+[P 
+  [DP [D [ Ce\\\footnotesize{This} ] ]
+      [NP [AP [A [ petit\\\footnotesize{small} ] ] ]
+          [N [ arbre\\\footnotesize{tree} ] ] ] ]
+  [VP [V [ est\\\footnotesize{is} ] ]
+      [AP [AdvP [Adv [ très\\\footnotesize{very} ] ] ]
+          [A [ joli\\\footnotesize{nice} ] ] ] ] ]
+\end{forest}
+
+You can also make a more involved example, with arrows:
+
+\ex.  \label{ex:rp-structure} 
+\footnotesize{%
+\begin{forest} for tree={l=10mm, l sep=0}
+   [AuxP 
+      [beP [RP 
+              [DP [John] ] 
+              [R$'$ [withP  
+                       [RP [DP [hair] ] 
+                           [R$'$ [AP [VP ] 
+                                     [A [ colored ] ] ] 
+                                 [R] ] ] 
+                        [with, name=source] ] 
+                    [R, name=c1] ] ] 
+            [be, name=c2]   ]  
+      [Aux [ has ] ] ]
+    % and now, we draw some arrows  
+   \draw[->,color=red,very thick,dotted] (source) to[out=east,in=south east] (c1);
+   \draw[->,color=blue,ultra thick,dashed] (c1) to[out=east,in=south east] (c2);
+\end{forest}}
+
+\citet[451]{Szadrowsky:1936} claims something, but I am not sure whether \citet[70]{Kamp:1973} would agree (or \citealt[50]{Searle:1964}, by that matter).
+
+For avms, we use \textbf{langsci-avm}.
+
+\ex. \avm{[ attr1 & \1\\
+attr2 & \2[attr3 & val3\\
+attr4 & val4] ]}
+
+You can combine \textbf{forest} and \textbf{langsci-avm}:
+
+\ex. \begin{forest}
+[A [B] [{\avm{[attr1 & val1\\
+attr2 & val2\\
+attr3 & val3]}} ] ]
+\end{forest}l
+
+And finally, for tables, we use the \textbf{booktabs}-environment, as illustrated in table \ref{tab:article-systems}. 
+
+
+
+\textbf{Question: do we insist that tables are put in a table-environment?}
+
+\begin{table}
+ \centering
+ \begin{tabular}[t]{lr}
+  \toprule
+  Type of language                     & Number \\
+  \midrule
+  No articles at all                   & 198    \\
+  Both indefinite and definite article & 154    \\
+  Definite, but no indefinite article  & 89     \\
+  Indefinite, but no definite article  & 40     \\
+  \midrule
+  Total                                & 481    \\
+  \bottomrule                                       
+\end{tabular}
+  \caption{Article Systems in the World's Languages according to \emph{WALS}}
+  \label{tab:article-systems}
+\end{table}
 
 
 %%%%%%%%%%
