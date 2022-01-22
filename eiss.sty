@@ -39,17 +39,60 @@
 \NeedsTeXFormat{LaTeX2e}[2015/10/01]%
 \ProvidesPackage{eiss}[2020/12/30 v3.2a LaTeX template for EISS 13]
 
+% Test for xetex engine
+\usepackage{ifxetex}
+
 % Set up the page geometry:
 \RequirePackage{geometry}%
 \geometry{headsep=3mm,includehead,margin=10mm,nofoot}%
 % Assuming A5 (148mm x 210mm), this gives a text width of 128mm and a
 % text height of 190mm
 
+% Define Libertinus as the main font
+\newcommand{\UseLibertinus}{%
+  \ifxetex %
+  \usepackage{fontspec} %
+  \usepackage{unicode-math} %
+  \usepackage{xunicode} %
+  \setmainfont[Ligatures=TeX,%
+  BoldSlantedFont = {LibertinusSerif-Bold.otf}, %
+  SlantedFont    = {LibertinusSerif-Regular.otf}, %
+  SlantedFeatures = {FakeSlant=0.18}, %
+  BoldSlantedFeatures = {FakeSlant=0.18}, %
+  ItalicFont={LibertinusSerif-Italic.otf},%
+  BoldFont={LibertinusSerif-Semibold.otf},%
+  BoldItalicFont={LibertinusSerif-SemiboldItalic.otf}%
+  ]{LibertinusSerif-Regular.otf} %
+  \setmathfont{LibertinusMath-Regular.otf} %
+  \setsansfont[ Scale=.935, %
+  BoldSlantedFont = {LibertinusSerif-Semibold.otf}, %
+  SlantedFont    = {LibertinusSerif-Regular.otf}, %
+  SlantedFeatures = {FakeSlant=0.18}, %
+  BoldSlantedFeatures = {FakeSlant=0.18}, %
+  ItalicFont={FiraSans-Italic.otf},%
+  BoldFont={FiraSans-SemiBold.otf},%
+  BoldItalicFont={FiraSans-SemiBoldItalic.otf}%
+  ]{FiraSans-Regular.otf} %
+  \setmonofont[Scale=.825 %
+  ]{FiraMono-Regular.otf}
+ \else %
+  \usepackage[utf8]{inputenc} %
+  \usepackage[T3,T1]{fontenc} %
+  \usepackage[libertine]{newtxmath} %
+  \usepackage{libertine} %
+  \usepackage[% scaled=.825 %
+  ]{FiraSans} %
+  \usepackage[scaled=.825]{} %
+  \usepackage[noenc]{tipa} %
+\fi %
+%%% End xetex or pdftex
+}
+
 % Define Utopia as the main font:
 \newcommand{\UseUtopia}{%
-  \RequirePackage{fourier}% Utopia for serif
-  \RequirePackage[scaled=.95]{cabin}% Cabin for sans serif
-  \RequirePackage{zlmtt}% Latin Modern Typewriter for mono
+ \RequirePackage{fourier}% Utopia for serif
+ \RequirePackage[scaled=.95]{cabin}% Cabin for sans serif
+ \RequirePackage{zlmtt}% Latin Modern Typewriter for mono
 }
 
 % Define Palatino as the main font (was the default font used in v3.1c
