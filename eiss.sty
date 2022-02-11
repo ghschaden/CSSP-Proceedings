@@ -43,8 +43,13 @@
 
 % Test for xetex engine
 \usepackage{ifxetex}
-\RequirePackage{hyperref}
-
+\RequirePackage[unicode,%
+naturalnames,%
+hidelinks]{hyperref}
+\pdfstringdefDisableCommands{%
+  \def\leavevmode@ifvmode{}%
+  \def\kern#1{<#1>}%
+}
 % Set up the page geometry:
 \RequirePackage{geometry}%
 \geometry{headsep=3mm,includehead,margin=10mm,nofoot}%
@@ -287,24 +292,6 @@
 \newcommand{\SpUrl}[1]{%
   \edef\tmp{\noexpand\url{#1}}%
   \tmp}
-
-% By the way, why not use hyperref instead of url? If we were certain
-% that every author would use LaTeX and compile using pdflatex, then
-% hyperref would be a real option. But we don't have this certainty: (i)
-% some authors may need to compile using latex + dvips + ps2pdf, in
-% which case the line-breaking of long links (in particular, citation
-% links) is a problem; (ii) some authors may not even use LaTeX, in
-% which case the attempt to emulate the particular behavior of hyperref
-% in a word processor is a problem. So, unfortunately, even if (only
-% fairly rough) uniformity is a goal, hyperref is not a real option for
-% us. Accordingly, let's issue a warning if hyperref is loaded:
-\AtBeginDocument{%
-  \@ifpackageloaded{hyperref}%
-  {%
-    \PackageWarning{eiss}{Please don't use the package hyperref!}%
-  }%
-  {}%
-}
 
 % For a custom quoting environment (LaTeX's standard environments quote
 % and quotation aren't flexible):
