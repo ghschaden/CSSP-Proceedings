@@ -42,11 +42,11 @@
 \ProvidesPackage{eiss}[2020/12/30 v3.2a LaTeX template for EISS 13]
 
 % Test for xetex engine
-%\usepackage{ifxetex}
-\usepackage{iftex}
+\RequirePackage{iftex}
 \RequirePackage[unicode,%
-                naturalnames,%
-                hidelinks]{hyperref}
+               naturalnames,%
+               hidelinks]{hyperref}
+
 \pdfstringdefDisableCommands{%
   \def\leavevmode@ifvmode{}%
   \def\kern#1{<#1>}%
@@ -59,40 +59,44 @@
 
 % Define Libertinus as the main font
 \newcommand{\UseLibertinus}{%
-  \ifxetex %
-  \usepackage{fontspec} %
-  \usepackage{unicode-math} %
-  \usepackage{xunicode} %
-  \setmainfont[Ligatures=TeX,%
-  BoldSlantedFont = {LibertinusSerif-Bold.otf}, %
-  SlantedFont    = {LibertinusSerif-Regular.otf}, %
-  SlantedFeatures = {FakeSlant=0.18}, %
-  BoldSlantedFeatures = {FakeSlant=0.18}, %
-  ItalicFont={LibertinusSerif-Italic.otf},%
-  BoldFont={LibertinusSerif-Semibold.otf},%
-  BoldItalicFont={LibertinusSerif-SemiboldItalic.otf}%
-  ]{LibertinusSerif-Regular.otf} %
-  \setmathfont{LibertinusMath-Regular.otf} %
-  \setsansfont[ Scale=.935, %
-  BoldSlantedFont = {LibertinusSerif-Semibold.otf}, %
-  SlantedFont    = {LibertinusSerif-Regular.otf}, %
-  SlantedFeatures = {FakeSlant=0.18}, %
-  BoldSlantedFeatures = {FakeSlant=0.18}, %
-  ItalicFont={FiraSans-Italic.otf},%
-  BoldFont={FiraSans-SemiBold.otf},%
-  BoldItalicFont={FiraSans-SemiBoldItalic.otf}%
-  ]{FiraSans-Regular.otf} %
-  \setmonofont[Scale=.825 %
-  ]{FiraMono-Regular.otf}
+  \ifpdftex
+    \usepackage[utf8]{inputenc} %
+    \usepackage[T3,T1]{fontenc} %
+    \usepackage[libertine]{newtxmath} %
+    \usepackage{libertine} %
+    \usepackage[% scaled=.825 %
+      ]{FiraSans} %
+    \usepackage[scaled=.825]{} %
+    \usepackage[noenc]{tipa} %
  \else %
-  \usepackage[utf8]{inputenc} %
-  \usepackage[T3,T1]{fontenc} %
-  \usepackage[libertine]{newtxmath} %
-  \usepackage{libertine} %
-  \usepackage[% scaled=.825 %
-  ]{FiraSans} %
-  \usepackage[scaled=.825]{} %
-  \usepackage[noenc]{tipa} %
+    \usepackage{fontspec} %
+    \usepackage{unicode-math} %
+    \setmainfont[Ligatures=TeX,%
+       BoldSlantedFont = {LibertinusSerif-Bold.otf}, %
+       SlantedFont    = {LibertinusSerif-Regular.otf}, %
+       SlantedFeatures = {FakeSlant=0.18}, %
+       BoldSlantedFeatures = {FakeSlant=0.18}, %
+       ItalicFont={LibertinusSerif-Italic.otf},%
+       BoldFont={LibertinusSerif-Semibold.otf},%
+       BoldItalicFont={LibertinusSerif-SemiboldItalic.otf}%
+     ]{LibertinusSerif-Regular.otf} %
+    \setmathfont{LibertinusMath-Regular.otf} %
+    \setsansfont[ Scale=.935, %
+      BoldSlantedFont = {LibertinusSerif-Semibold.otf}, %
+      SlantedFont    = {LibertinusSerif-Regular.otf}, %
+      SlantedFeatures = {FakeSlant=0.18}, %
+      BoldSlantedFeatures = {FakeSlant=0.18}, %
+      ItalicFont={FiraSans-Italic.otf},%
+      BoldFont={FiraSans-SemiBold.otf},%
+      BoldItalicFont={FiraSans-SemiBoldItalic.otf}%
+     ]{FiraSans-Regular.otf} %
+    \setmonofont[Scale=.825 %
+     ]{FiraMono-Regular.otf}
+  \ifxetex
+     \usepackage{xunicode} %
+  \else
+     \usepackage[noenc]{tipa} %
+  \fi
 \fi %
 %%% End xetex or pdftex
 }
