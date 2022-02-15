@@ -42,10 +42,11 @@
 \ProvidesPackage{eiss}[2020/12/30 v3.2a LaTeX template for EISS 13]
 
 % Test for xetex engine
-\usepackage{ifxetex}
+%\usepackage{ifxetex}
+\usepackage{iftex}
 \RequirePackage[unicode,%
-naturalnames,%
-hidelinks]{hyperref}
+                naturalnames,%
+                hidelinks]{hyperref}
 \pdfstringdefDisableCommands{%
   \def\leavevmode@ifvmode{}%
   \def\kern#1{<#1>}%
