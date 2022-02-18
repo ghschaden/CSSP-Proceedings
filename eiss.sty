@@ -167,13 +167,6 @@
   \renewcommand\tipaencoding{\fontencoding{T3}\fontfamily{ptm}\selectfont}%
 }
 
-% Use T1 and TS1 font encodings:
-\RequirePackage[T1]{fontenc}%
-\RequirePackage{textcomp}
-
-% Needed in order to check whether pdflatex is used:
-\RequirePackage{ifpdf}
-
 % Let's get some color:
 \RequirePackage[dvipsnames,svgnames,x11names]{xcolor}%
 % From https://www.canva.com/learn/100-color-combinations/:
@@ -218,6 +211,9 @@
 \RequirePackage{caption}%
 \DeclareCaptionLabelSeparator*{HspaceSep}{\hspace*{2mm}}%
 \captionsetup{font=small,labelfont={sf,bf,color=\HeadingsColor},labelsep=HspaceSep}
+
+% Get a more compact layout for floats:
+\RequirePackage{fewerfloatpages}
 
 % For the headings of definitions, theorems, and the like:
 \RequirePackage{theorem}%
@@ -522,9 +518,9 @@
 
 % Some useful commands:
 \newcommand{\EISS}{EISS}%
-\newcommand{\EISSeditorA}{A B}%
-\newcommand{\EISSeditorB}{C D}%
-\newcommand{\EISSeditorC}{E F}%
+\newcommand{\EISSeditorA}{Gabriela Bîlbîie}%
+\newcommand{\EISSeditorB}{Berthold Crysmann}%
+\newcommand{\EISSeditorC}{Gerhard Schaden}%
 \newcommand{\EISSeditorAColor}{\textcolor{\AuthorsColor}{\EISSeditorA}}%
 \newcommand{\EISSeditorBColor}{\textcolor{\AuthorsColor}{\EISSeditorB}}%
 \newcommand{\EISSeditorCColor}{\textcolor{\AuthorsColor}{\EISSeditorC}}%
