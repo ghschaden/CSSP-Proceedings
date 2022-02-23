@@ -39,7 +39,7 @@
 
 % Let's begin:
 \NeedsTeXFormat{LaTeX2e}[2015/10/01]%
-\ProvidesPackage{eiss}[2020/12/30 v3.2a LaTeX template for EISS 13]
+\ProvidesPackage{eiss}[2022/02/22 v3.3a LaTeX template for EISS 14]
 
 % Test for xetex engine
 \RequirePackage{iftex}
@@ -272,6 +272,7 @@
                 natbib=true,
 			    bibstyle=biblatex-gl,
 			    citestyle=gl-authoryear-comp,
+			    sortcites=false, % in multiple citation, take order as stated
 			    maxcitenames=3,
 			    maxbibnames=99]{biblatex}
 			
