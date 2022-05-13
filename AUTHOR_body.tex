@@ -116,6 +116,19 @@ And finally, for tables, we use the \textbf{booktabs}-environment, as illustrate
   \label{tab:article-systems}
 \end{table}
 
+And finally, you can also add figures. Figures are floats in \LaTeX{}, so they might end up on another page. When adding a figure, please make sure that the picture is in a high enough resolution (we recommend 300dpi or more), and that you have the right to include the picture.
+
+\begin{figure}
+    \centering
+    % you might need to adjust the width of the picture
+    \includegraphics[width=1.0\textwidth]{cat.png}
+    \caption{A cute cat (not sure if this is relevant)}
+    \label{fig:my_cat}
+\end{figure}
+
+As usual, you can refer back to figure \ref{fig:my_cat}.\footnote{Source of the cat: \href{https://commons.wikimedia.org/wiki/File:VAN_CAT.png}{https://commons.wikimedia.org/wiki/File:VAN\_CAT.png}.}
+
+
 
 %%%%%%%%%%
 %% The official end of this file

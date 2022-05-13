@@ -70,7 +70,7 @@
  \else %
     \usepackage{fontspec} %
     \usepackage{unicode-math} %
-    \setmainfont[Ligatures=TeX,%
+    \setmainfont[Ligatures=TeX, %
        BoldSlantedFont = {LibertinusSerif-Bold.otf}, %
        SlantedFont    = {LibertinusSerif-Regular.otf}, %
        SlantedFeatures = {FakeSlant=0.18}, %
@@ -80,7 +80,7 @@
        BoldItalicFont={LibertinusSerif-SemiboldItalic.otf}%
      ]{LibertinusSerif-Regular.otf} %
     \setmathfont{LibertinusMath-Regular.otf} %
-    \setsansfont[ Scale=.935, %
+    \setsansfont[ Scale=.935,% Numbers=lining,%
       BoldSlantedFont = {LibertinusSerif-Semibold.otf}, %
       SlantedFont    = {LibertinusSerif-Regular.otf}, %
       SlantedFeatures = {FakeSlant=0.18}, %
@@ -307,24 +307,30 @@
 \newcommand{\AuthorCLastName}{AuthorC-LName}%
 \newcommand{\AuthorDFirstName}{AuthorD-FName}%
 \newcommand{\AuthorDLastName}{AuthorD-LName}
+\newcommand{\AuthorEFirstName}{AuthorE-FName}%
+\newcommand{\AuthorELastName}{AuthorD-Lname}
 
 % Concatenate the first with the last names:
 \newcommand{\AuthorA}{\AuthorAFirstName\ \AuthorALastName}%
 \newcommand{\AuthorB}{\AuthorBFirstName\ \AuthorBLastName}%
 \newcommand{\AuthorC}{\AuthorCFirstName\ \AuthorCLastName}%
-\newcommand{\AuthorD}{\AuthorDFirstName\ \AuthorDLastName}
+\newcommand{\AuthorD}{\AuthorDFirstName\ \AuthorDLastName}%
+\newcommand{\AuthorE}{\AuthorEFirstName\ \AuthorELastName}%
 
 % Commands for the first initials of the first names of the authors:
 \newcommand{\AuthorAFirstInitial}{A}%
 \newcommand{\AuthorBFirstInitial}{B}%
 \newcommand{\AuthorCFirstInitial}{C}%
-\newcommand{\AuthorDFirstInitial}{D}
+\newcommand{\AuthorDFirstInitial}{D}%
+\newcommand{\AuthorEFirstInitial}{E}
+
 
 % Concatenate the first initials of the first names with the last names:
 \newcommand{\AuthorAShort}{\AuthorAFirstInitial.~\AuthorALastName}%
 \newcommand{\AuthorBShort}{\AuthorBFirstInitial.~\AuthorBLastName}%
 \newcommand{\AuthorCShort}{\AuthorCFirstInitial.~\AuthorCLastName}%
-\newcommand{\AuthorDShort}{\AuthorDFirstInitial.~\AuthorDLastName}
+\newcommand{\AuthorDShort}{\AuthorDFirstInitial.~\AuthorDLastName}%
+\newcommand{\AuthorEShort}{\AuthorEFirstInitial.~\AuthorELastName}
 
 % Introduce affiliations and URLs:
 \newcommand{\AuthorAAffiliation}{AuthorA-Affiliation}%
@@ -334,7 +340,9 @@
 \newcommand{\AuthorCAffiliation}{AuthorC-Affiliation}%
 \newcommand{\AuthorCUrl}{AuthorC-URL}%
 \newcommand{\AuthorDAffiliation}{AuthorD-Affiliation}%
-\newcommand{\AuthorDUrl}{AuthorD-URL}
+\newcommand{\AuthorDUrl}{AuthorD-URL}%
+\newcommand{\AuthorEAffiliation}{AuthorE-Affiliation}%
+\newcommand{\AuthorEUrl}{AuthorE-URL}
 
 % For the title of the paper:
 \newcommand{\TitleOfPaper}{The title of the paper}
@@ -429,12 +437,14 @@
 \newcommand{\AuthorAColor}{\textcolor{\AuthorsColor}{\AuthorA}}%
 \newcommand{\AuthorBColor}{\textcolor{\AuthorsColor}{\AuthorB}}%
 \newcommand{\AuthorCColor}{\textcolor{\AuthorsColor}{\AuthorC}}%
-\newcommand{\AuthorDColor}{\textcolor{\AuthorsColor}{\AuthorD}}
+\newcommand{\AuthorDColor}{\textcolor{\AuthorsColor}{\AuthorD}}%
+\newcommand{\AuthorEColor}{\textcolor{\AuthorsColor}{\AuthorE}}
 
 \newcommand{\AuthorAShortColor}{\textcolor{\AuthorsColor}{\AuthorAShort}}%
 \newcommand{\AuthorBShortColor}{\textcolor{\AuthorsColor}{\AuthorBShort}}%
 \newcommand{\AuthorCShortColor}{\textcolor{\AuthorsColor}{\AuthorCShort}}%
-\newcommand{\AuthorDShortColor}{\textcolor{\AuthorsColor}{\AuthorDShort}}
+\newcommand{\AuthorDShortColor}{\textcolor{\AuthorsColor}{\AuthorDShort}}%
+\newcommand{\AuthorEShortColor}{\textcolor{\AuthorsColor}{\AuthorEShort}}
 
 \newcommand{\AndColor}{\textcolor{\OtherColor}{\&}}%
 \newcommand{\BulletColor}{\textcolor{\OtherColor}{\textbullet}}
@@ -475,6 +485,21 @@
   \AuthorCColor, \AndColor\ \AuthorDColor}%
 \newcommand{\FourAuthorShortColor}{\AuthorAShortColor,
   \AuthorBShortColor, \AuthorCShortColor, \AndColor\ \AuthorDShortColor}
+  
+\newcommand{\FiveAuthorBullet}{\AuthorA\ \textbullet\ \AuthorB\
+  \textbullet\ \AuthorC\ \textbullet\ \AuthorD \textbullet \AuthorE}%
+\newcommand{\FiveAuthor}{\AuthorA, \AuthorB, \AuthorC, \AuthorD, \& \AuthorE}%
+\newcommand{\FiveAuthorShort}{\AuthorAShort, \AuthorBShort,
+  \AuthorCShort, \AuthorDShort, \& \AuthorEShort}
+  
+  
+\newcommand{\FiveAuthorBulletColor}{\AuthorAColor\ \BulletColor\
+  \AuthorBColor\ \BulletColor\ \AuthorCColor\ \BulletColor\
+  \AuthorDColor\ \BulletColor\ \AuthorEColor}%
+\newcommand{\FiveAuthorColor}{\AuthorAColor, \AuthorBColor,
+  \AuthorCColor, \AuthorDColor, \AndColor\ \AuthorEShort}%
+\newcommand{\FiveAuthorShortColor}{\AuthorAShortColor,
+  \AuthorBShortColor, \AuthorCShortColor, \AuthorDShortColor, \AndColor\ \AuthorEShortColor}  
 
 % For running headers with one author and a title:
 \newcommand{\OneAuthorHeader}{%
@@ -508,6 +533,14 @@
   \setlength{\headheight}{13.59999pt}%
   \fancyhead[EL,OR]{\small\thepage}%
   \fancyhead[ER]{\small\FourAuthorShortColor}%
+  \fancyhead[OL]{\small\textcolor{\HeadingsColor}{\sffamily
+      \TitleOfPaperInHeader}}%
+}
+
+\newcommand{\FiveAuthorHeader}{%
+  \setlength{\headheight}{13.59999pt}%
+  \fancyhead[EL,OR]{\small\thepage}%
+  \fancyhead[ER]{\small\FiveAuthorShortColor}%
   \fancyhead[OL]{\small\textcolor{\HeadingsColor}{\sffamily
       \TitleOfPaperInHeader}}%
 }
@@ -614,6 +647,18 @@
   }%
 }
 
+% Set the author preliminaries and PDF metadata for five authors:
+\newcommand{\FiveAuthorPrelim}{%
+  \FiveAuthorHeader%
+  \hypersetup{%
+    pdfauthor={\FiveAuthor},%
+    pdfkeywords={\Keywordpdfinfo},%
+    pdfsubject={\EISSyear. In \EISSeditorABCEd,
+    \EISStitlevolpdfinfo. \EISSplace: \EISSpublisher. \EISSurl},%
+    pdftitle={\TitleOfPaperpdfinfo}%
+  }%
+}
+
 % Set the author formatting for the first page according to the number
 % of authors:
 \newcommand{\FirstPageOneAuthor}{%
@@ -636,6 +681,12 @@
   \MakeTitleFourAuthor%
 }
 
+\newcommand{\FirstPageFiveAuthor}{%
+  \thispagestyle{HeaderFancy}%
+  \MakeTitleFiveAuthor%
+}
+
+
 % Make the author according to the number of authors:
 \newcommand{\MakeOneAuthor}{%
   \OneAuthorPrelim%
@@ -655,6 +706,11 @@
 \newcommand{\MakeFourAuthor}{%
   \FourAuthorPrelim%
   \FirstPageFourAuthor%
+}
+
+\newcommand{\MakeFiveAuthor}{%
+  \FiveAuthorPrelim%
+  \FirstPageFiveAuthor%
 }
 
 % Set the author information according to the number of authors:
@@ -735,6 +791,31 @@
     \SpUrl{\EISSurl}
 
     \textcopyright\ \EISSyear\ \FourAuthorColor
+
+  }%
+}
+
+\newcommand{\FiveAuthorInfo}{%
+  \noindent \textcolor{\RuleColor}{\rule{\textwidth}{0.4pt}}
+
+  {\raggedright\scriptsize
+
+    \AuthorAShortColor, \AuthorAAffiliation, \SpUrl{\AuthorAUrl}
+
+    \AuthorBShortColor, \AuthorBAffiliation, \SpUrl{\AuthorBUrl}
+
+    \AuthorCShortColor, \AuthorCAffiliation, \SpUrl{\AuthorCUrl}
+
+    \AuthorDShortColor, \AuthorDAffiliation, \SpUrl{\AuthorDUrl}
+    
+     \AuthorEShortColor, \AuthorEAffiliation, \SpUrl{\AuthorEUrl}
+
+    \vspace{2mm} In \EISSeditorABColorEdColor,
+    \textcolor{\HeadingsColor}{\sffamily \EISStitlevol},
+    \FirstPage--\LastPage. \EISSplace: \EISSpublisher. \
+    \SpUrl{\EISSurl}
+
+    \textcopyright\ \EISSyear\ \FiveAuthorColor
 
   }%
 }
@@ -824,6 +905,28 @@
   }%
 
   \FourAuthorInfo
+
+}
+
+% Make the title with five authors:
+\newcommand{\MakeTitleFiveAuthor}{%
+  \noindent{\raggedright
+
+    \bfseries\sffamily\Large\textcolor{\HeadingsColor}{\TitleOfPaper}
+
+    \vspace{3mm}\noindent\rmfamily\small\FiveAuthorBulletColor
+
+  }
+
+  \reducedparagraph{Abstract}{\AbstractOfPaper}
+
+  {\raggedright
+
+    \reducedparagraph{Keywords}{\KeywordBullet}
+
+  }%
+
+  \FiveAuthorInfo
 
 }
 
