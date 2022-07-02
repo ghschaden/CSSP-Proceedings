@@ -1,21 +1,21 @@
 
 README.txt
-Prepared by C. Pinon (cjpinon@implicature.xyz) for EISS 13 (see
+Initially prepared by C. Pinon (cjpinon@implicature.xyz) for EISS 13 (see
 https://implicature.xyz/eiss13/)
 2020-12-30 v3.2a
 2020-02-02 v3.2
 Modified by B. Crysmann and G. Schaden for EISS 14.
+2022-07-02 v. 3.3
 
 
-This is a LaTeX template package for EISS 13, for either pdflatex or
-latex as the typesetting engine.
+This is a LaTeX template package for EISS, for either pdflatex, xelatex or
+lualatex as the typesetting engine (we recommend the use of xelatex). As of EISS 14, latex with dvi output is no longer supported. 
 
-This package consists of 12 files:
+This package consists of 11 files:
 
 README.txt
 lppl.txt
 eiss.sty
-eiss13_logo_blank.eps
 eiss13_logo_blank.pdf
 gl-authoryear-comp.cbx
 biblatex-gl.bbx
@@ -32,29 +32,24 @@ Version 1.3c).
 
 eiss.sty is the LaTeX style file for EISS 14. Please do not modify it.
 
-eiss13_logo_blank.[eps|pdf] are two files containing a blank logo. One
-of these files is inserted by AUTHOR_master.tex -- the file inserted
-depends on whether xelatex or pdflatex (then the PDF version) or latex
-+ dvips (then the EPS version) is used to compile
-AUTHOR_master.tex. It may be easiest to keep these files in the same
+eiss13_logo_blank.pdf is a file containing a blank logo. It is inserted by AUTHOR_master.tex. It may be easiest to keep this file in the same
 directory as your TEX files.
 
-glossa.bst is a BibTeX style file from the journal Glossa. This is the
-BibTeX style file that you should use. This file is also available at:
+gl-authoryear-comp.cbx and biblatex-gl.bbx are biblatex style files from the journal Glossa (see https://www.glossa-journal.org/). They provide the bibliographic style that you should use. These files are also available at:
 
 https://github.com/guidovw/Glossalatex
 
-(This file is included as a convenience. It is not clear what its license
+(The files is included as a convenience. It is not clear what their license
 is.)
 
-AUTHOR_master.tex, AUTHOR_body.tex, AUTHOR_refs.tex, AUTHOR_bib.bib --
+main.tex, AUTHOR_body.tex, AUTHOR_refs.tex, AUTHOR_bib.bib --
 these four files are to be edited for your paper:
 
   - main.tex is the file in which you set 12 parameters for your
   paper, as well as for loading any additional packages that you
   need. Please follow the instructions in it (it's intended to be
-  self-explanatory). This is the file that you compile. While you work
-  on overleaf, do not rename it (but before submitting, change its
+  self-explanatory). This is the file that you compile. The name has been choses for ease of integration with Overleaf. While you work
+  on Overleaf, do not rename it (but before submitting, change its
   name to "AUTHOR_main" with your last name, e.g.,
   roussarie_main.tex).
 
@@ -70,9 +65,7 @@ these four files are to be edited for your paper:
 
 We encourage use of unicode. For that, please make sure your source
 files use UTF-8 encoding. To compile your document, you should use a
-unicode-aware TeX engine, such as xelatex. You can then directly use a
-wide range of Latin, Greek, and Cyrillic characters in your document,
-as well as the IPA.
+unicode-aware TeX engine, such as xelatex, but pdflatex is still supported. You can then directly use a wide range of Latin, Greek, and Cyrillic characters in your document, as well as the IPA.
 
 Before sending the source files for your paper to the editors, please
 make certain that you've paid attention to the points mentioned at
