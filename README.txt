@@ -47,7 +47,8 @@ main.tex, AUTHOR_body.tex, AUTHOR_refs.tex, AUTHOR_bib.bib -- these four files a
   - main.tex is the file in which you set 12 parameters for your
   paper, as well as for loading any additional packages that you
   need. Please follow the instructions in it (it's intended to be
-  self-explanatory). This is the file that you compile. The name has been choses for ease of integration with Overleaf. While you work
+  self-explanatory). This is the file that you compile. The name has 
+  been chosen for ease of integration with Overleaf. While you work
   on Overleaf, do not rename it (but before submitting, change its
   name to "AUTHOR_main" with your last name, e.g.,
   roussarie_main.tex).
