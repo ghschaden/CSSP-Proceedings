@@ -554,6 +554,7 @@
 
 % Some useful commands:
 \newcommand{\EISS}{EISS}%
+\newcommand{\numberofEds}{3}%
 \newcommand{\EISSeditorA}{Gabriela Bîlbîie}%
 \newcommand{\EISSeditorB}{Berthold Crysmann}%
 \newcommand{\EISSeditorC}{Gerhard Schaden}%
@@ -565,13 +566,35 @@
 \newcommand{\EISSedColor}{\textcolor{\OtherColor}{\EISSed}}%
 \newcommand{\EISSedsColor}{\textcolor{\OtherColor}{\EISSeds}}%
 \newcommand{\EISSeditorAEd}{\EISSeditorA\ \EISSed}%
-\newcommand{\EISSeditorAColorEdColor}{\EISSeditorAColor\ \EISSedColor}%
 \newcommand{\EISSeditorABEd}{\EISSeditorA\ \& \EISSeditorB\ \EISSeds}%
 \newcommand{\EISSeditorABCEd}{\EISSeditorA{}, \EISSeditorB{} {}\& \EISSeditorC{}\ \EISSeds}%
+\newcommand{\EISSeditorString}{%
+  \ifnum \numberofEds = 1
+    \EISSeditorAEd
+  \fi
+  \ifnum \numberofEds = 2
+      \EISSeditorABEd
+  \fi
+  \ifnum  \numberofEds = 3
+     \EISSeditorABCEd
+  \fi        
+ }
+\newcommand{\EISSeditorAColorEdColor}{\EISSeditorAColor\ \EISSedColor}%
 \newcommand{\EISSeditorABColorEdColor}{\EISSeditorAColor\ \AndColor\
   \EISSeditorBColor\ \EISSedsColor}%
 \newcommand{\EISSeditorABCColorEdColor}{\EISSeditorAColor{}, \EISSeditorBColor \,\AndColor\
   \EISSeditorCColor\ \EISSedsColor}%
+\newcommand{\EISSeditorColorString}{%
+  \ifnum \numberofEds = 1
+    \EISSeditorAColorEdColor
+  \fi
+  \ifnum \numberofEds = 2
+      \EISSeditorABColorEdColor
+  \fi
+  \ifnum  \numberofEds = 3
+     \EISSeditorABCColorEdColor
+  \fi        
+ }
 % Will eventually be replaced by a visible logo, but blank for now:
 \newcommand{\EISSlogo}{\includegraphics{eiss13_logo_blank}}%
 \newcommand{\EISSplace}{Paris}%
@@ -583,7 +606,7 @@
 \newcommand{\EISStitlevol}{\EISStitle\ \EISSvol}%
 \newcommand{\EISStitlevolpdfinfo}{\EISStitlevol\ (\EISS\ \EISSvol)}
 
-% Introduce a new length for the header on the first page: 
+% Introduce a new length for the header on the first page:
 \newlength{\FirstHeaderHeight}
 
 % Need to increase the height of the header on the first page in order
@@ -607,7 +630,7 @@
   \hypersetup{%
     pdfauthor={\AuthorA},%
     pdfkeywords={\Keywordpdfinfo},%
-    pdfsubject={\EISSyear. In \EISSeditorABCEd,
+    pdfsubject={\EISSyear. In \EISSeditorString,
     \EISStitlevolpdfinfo. \EISSplace: \EISSpublisher. \EISSurl},%
     pdftitle={\TitleOfPaperpdfinfo},%
     }
@@ -620,11 +643,11 @@
   \hypersetup{%
     pdfauthor={\TwoAuthor},%
     pdfkeywords={\Keywordpdfinfo},%
-    pdfsubject={\EISSyear. In \EISSeditorABCEd,
+    pdfsubject={\EISSyear. In \EISSeditorString,
     \EISStitlevolpdfinfo. \EISSplace: \EISSpublisher. \EISSurl},%
     pdftitle={\TitleOfPaperpdfinfo}%
   }
-}  
+}
 
 % Set the author preliminaries and PDF metadata for three authors:
 \newcommand{\ThreeAuthorPrelim}{%
@@ -632,7 +655,7 @@
   \hypersetup{%
     pdfauthor={\ThreeAuthor},%
     pdfkeywords={\Keywordpdfinfo},%
-    pdfsubject={\EISSyear. In \EISSeditorABCEd,
+    pdfsubject={\EISSyear. In \EISSeditorString,
     \EISStitlevolpdfinfo. \EISSplace: \EISSpublisher. \EISSurl},%
     pdftitle={\TitleOfPaperpdfinfo}%
   }%
@@ -644,7 +667,7 @@
   \hypersetup{%
     pdfauthor={\FourAuthor},%
     pdfkeywords={\Keywordpdfinfo},%
-    pdfsubject={\EISSyear. In \EISSeditorABCEd,
+    pdfsubject={\EISSyear. In \EISSeditorString,
     \EISStitlevolpdfinfo. \EISSplace: \EISSpublisher. \EISSurl},%
     pdftitle={\TitleOfPaperpdfinfo}%
   }%
@@ -656,7 +679,7 @@
   \hypersetup{%
     pdfauthor={\FiveAuthor},%
     pdfkeywords={\Keywordpdfinfo},%
-    pdfsubject={\EISSyear. In \EISSeditorABCEd,
+    pdfsubject={\EISSyear. In \EISSeditorString,
     \EISStitlevolpdfinfo. \EISSplace: \EISSpublisher. \EISSurl},%
     pdftitle={\TitleOfPaperpdfinfo}%
   }%
@@ -724,7 +747,7 @@
 
     \AuthorAShortColor, \AuthorAAffiliation, \SpUrl{\AuthorAUrl}
 
-    \vspace{2mm} In \EISSeditorABCColorEdColor,
+    \vspace{2mm} In \EISSeditorColorString, %\EISSeditorABCColorEdColor,
     \textcolor{\HeadingsColor}{\sffamily \EISStitlevol},
     \FirstPage--\LastPage. \EISSplace: \EISSpublisher. \
     \SpUrl{\EISSurl}
@@ -744,7 +767,7 @@
 
     \AuthorBShortColor, \AuthorBAffiliation, \SpUrl{\AuthorBUrl}
 
-    \vspace{2mm} In \EISSeditorABCColorEdColor,
+    \vspace{2mm} In \EISSeditorColorString, % \EISSeditorABColorEdColor,
     \textcolor{\HeadingsColor}{\sffamily \EISStitlevol},
     \FirstPage--\LastPage. \EISSplace: \EISSpublisher. \
     \SpUrl{\EISSurl}
@@ -765,7 +788,7 @@
 
     \AuthorCShortColor, \AuthorCAffiliation, \SpUrl{\AuthorCUrl}
 
-    \vspace{2mm} In \EISSeditorABCColorEdColor,
+    \vspace{2mm} In \EISSeditorColorString, % \EISSeditorABColorEdColor,
     \textcolor{\HeadingsColor}{\sffamily \EISStitlevol},
     \FirstPage--\LastPage. \EISSplace: \EISSpublisher. \
     \SpUrl{\EISSurl}
@@ -788,7 +811,7 @@
 
     \AuthorDShortColor, \AuthorDAffiliation, \SpUrl{\AuthorDUrl}
 
-    \vspace{2mm} In \EISSeditorABCColorEdColor,
+    \vspace{2mm} In \EISSeditorColorString, %\EISSeditorABColorEdColor,
     \textcolor{\HeadingsColor}{\sffamily \EISStitlevol},
     \FirstPage--\LastPage. \EISSplace: \EISSpublisher. \
     \SpUrl{\EISSurl}
@@ -810,10 +833,10 @@
     \AuthorCShortColor, \AuthorCAffiliation, \SpUrl{\AuthorCUrl}
 
     \AuthorDShortColor, \AuthorDAffiliation, \SpUrl{\AuthorDUrl}
-    
+
      \AuthorEShortColor, \AuthorEAffiliation, \SpUrl{\AuthorEUrl}
 
-    \vspace{2mm} In \EISSeditorABCColorEdColor,
+    \vspace{2mm} In \EISSeditorColorString, %\EISSeditorABCColorEdColor,
     \textcolor{\HeadingsColor}{\sffamily \EISStitlevol},
     \FirstPage--\LastPage. \EISSplace: \EISSpublisher. \
     \SpUrl{\EISSurl}
