@@ -1,4 +1,3 @@
-
 README.txt
 Initially prepared by C. Pinon (cjpinon@implicature.xyz) for EISS 13 (see
 https://implicature.xyz/eiss13/)
@@ -6,7 +5,7 @@ https://implicature.xyz/eiss13/)
 2020-02-02 v3.2
 Modified by B. Crysmann and G. Schaden for EISS 14.
 2022-07-02 v. 3.3
-
+2022-07-29 v. 4.0 (breaking changes to user interface)
 
 This is a LaTeX template package for EISS, for either pdflatex, xelatex or lualatex as the typesetting engine (we recommend the use of xelatex). As of EISS 14, latex with dvi output is no longer supported. 
 
