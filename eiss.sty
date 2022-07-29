@@ -517,36 +517,10 @@
   \fi
 }    
 
-\newcommand{\TwoAuthorShortColor}{\AuthorAShortColor\ \AndColor\
-  \AuthorBShortColor}
-\newcommand{\ThreeAuthorShortColor}{\AuthorAShortColor,
-  \AuthorBShortColor, \AndColor\ \AuthorCShortColor}
-\newcommand{\FourAuthorShortColor}{\AuthorAShortColor,
-  \AuthorBShortColor, \AuthorCShortColor, \AndColor\ \AuthorDShortColor}
-\newcommand{\FiveAuthorShortColor}{\AuthorAShortColor,
-  \AuthorBShortColor, \AuthorCShortColor, \AuthorDShortColor, \AndColor\ \AuthorEShortColor}  
-%
-
 \newcommand{\AuthorHeader}{%
   \setlength{\headheight}{13.59999pt}%
   \fancyhead[EL,OR]{\small\thepage}%
-  \fancyhead[ER]{\small
-    \ifnum \AuthorNumber = 1
-      \AuthorAShortColor
-    \fi
-    \ifnum \AuthorNumber = 2
-      \TwoAuthorShortColor
-    \fi
-    \ifnum \AuthorNumber = 3
-      \ThreeAuthorShortColor
-    \fi
-    \ifnum \AuthorNumber = 4
-      \FourAuthorShortColor
-    \fi
-    \ifnum \AuthorNumber = 5
-      \FiveAuthorShortColor
-    \fi
-    }%
+  \fancyhead[ER]{\small \AuthorShortColorString}%
   \fancyhead[OL]{\small\textcolor{\HeadingsColor}{\sffamily
       \TitleOfPaperInHeader}}%
   }
