@@ -1,6 +1,6 @@
 % eiss.sty
 % Copyright 2022 Berthold Crysmann & Gerhard Schaden
-% 2022-02-11 v3.3a
+% 2022-07-29 v4.0
 % Copyright 2020 Christopher Pinon
 % 2020-12-30 v3.2a
 % 2020-02-02 v3.2
@@ -8,6 +8,8 @@
 % 2022-01-02 change for biblatex
 % 2022-02-11 modified for LuaLaTeX compatilibity 
 % 2022-05-13 modified to support 5 authors
+% 2022-07-29 cleanup for better maintainability
+% ATTENTION: This breaks compatibility with previous versions!
 
 % This work may be distributed and/or modified under the conditions of
 % the LaTeX Project Public License, either version 1.3 of this license
@@ -469,60 +471,72 @@
   \ifnum \AuthorNumber = 5
     \AuthorA, \AuthorB, \AuthorC, \AuthorD, \& \AuthorE
   \fi
-  }
+}
 
-\newcommand{\TwoAuthorBullet}{\AuthorA\ \textbullet\ \AuthorB}%
-\newcommand{\TwoAuthor}{\AuthorA\ \& \AuthorB}%
-\newcommand{\TwoAuthorShort}{\AuthorAShort\ \& \AuthorBShort}
+\newcommand{\AuthorColorString}{%
+  \ifnum \AuthorNumber = 1
+    \AuthorAColor
+  \fi
+  \ifnum \AuthorNumber = 2
+    \AuthorAColor\ \AndColor\ \AuthorBColor
+  \fi
+  \ifnum \AuthorNumber = 3
+    \AuthorAColor, \AuthorBColor, \AndColor\ \AuthorCColor
+  \fi  
+  \ifnum \AuthorNumber = 4
+    \AuthorAColor, \AuthorBColor, \AuthorCColor, \AndColor\ \AuthorDColor
+  \fi
+  \ifnum \AuthorNumber = 5
+    \AuthorAColor, \AuthorBColor, \AuthorCColor, \AuthorDColor, \AndColor\ \AuthorEColor
+  \fi
+}    
 
-\newcommand{\TwoAuthorBulletColor}{\AuthorAColor\ \BulletColor\
-  \AuthorBColor}%
-\newcommand{\TwoAuthorColor}{\AuthorAColor\ \AndColor\ \AuthorBColor}%
+
+\newcommand{\AuthorShortColorString}{%
+  \ifnum \AuthorNumber = 1
+    \AuthorAShortColor
+  \fi
+  \ifnum \AuthorNumber = 2
+    \AuthorAShortColor\ \AndColor\ \AuthorBShortColor
+  \fi
+  \ifnum \AuthorNumber = 3
+    \AuthorAShortColor, \AuthorBShortColor, \AndColor\ \AuthorCShortColor
+  \fi  
+  \ifnum \AuthorNumber = 4
+    \AuthorAShortColor, \AuthorBShortColor, \AuthorCShortColor, \AndColor\ \AuthorDShortColor
+  \fi
+  \ifnum \AuthorNumber = 5
+    \AuthorAShortColor, \AuthorBShortColor, \AuthorCShortColor, \AuthorDShortColor, \AndColor\ \AuthorEShortColor
+  \fi
+}    
+
+\newcommand{\AuthorColorBulletString}{%
+  \ifnum \AuthorNumber = 1
+    \AuthorAColor
+  \fi
+  \ifnum \AuthorNumber = 2
+    \AuthorAColor\ \BulletColor\ \AuthorBColor
+  \fi
+  \ifnum \AuthorNumber = 3
+    \AuthorAColor\ \BulletColor\ \AuthorBColor\ \BulletColor\  \AuthorCColor
+  \fi  
+  \ifnum \AuthorNumber = 4
+    \AuthorAColor\ \BulletColor\ \AuthorBColor\ \BulletColor\  \AuthorCColor\ \BulletColor\  \AuthorDColor
+  \fi
+  \ifnum \AuthorNumber = 5
+    \AuthorAColor\ \BulletColor\ \AuthorBColor\ \BulletColor\  \AuthorCColor\ \BulletColor\  \AuthorDColor\ \BulletColor\ \AuthorEColor
+  \fi
+}    
+
 \newcommand{\TwoAuthorShortColor}{\AuthorAShortColor\ \AndColor\
   \AuthorBShortColor}
-
-\newcommand{\ThreeAuthorBullet}{\AuthorA\ \textbullet\ \AuthorB\
-  \textbullet\ \AuthorC}%
-\newcommand{\ThreeAuthor}{\AuthorA, \AuthorB, \& \AuthorC}%
-\newcommand{\ThreeAuthorShort}{\AuthorAShort, \AuthorBShort, \&
-  \AuthorCShort}
-
-\newcommand{\ThreeAuthorBulletColor}{\AuthorAColor\ \BulletColor\
-  \AuthorBColor\ \BulletColor\ \AuthorCColor}%
-\newcommand{\ThreeAuthorColor}{\AuthorAColor, \AuthorBColor, \AndColor\
-  \AuthorCColor}%
 \newcommand{\ThreeAuthorShortColor}{\AuthorAShortColor,
   \AuthorBShortColor, \AndColor\ \AuthorCShortColor}
-
-\newcommand{\FourAuthorBullet}{\AuthorA\ \textbullet\ \AuthorB\
-  \textbullet\ \AuthorC\ \textbullet\ \AuthorD}%
-\newcommand{\FourAuthor}{\AuthorA, \AuthorB, \AuthorC, \& \AuthorD}%
-\newcommand{\FourAuthorShort}{\AuthorAShort, \AuthorBShort,
-  \AuthorCShort, \& \AuthorDShort}
-
-\newcommand{\FourAuthorBulletColor}{\AuthorAColor\ \BulletColor\
-  \AuthorBColor\ \BulletColor\ \AuthorCColor\ \BulletColor\
-  \AuthorDColor}%
-\newcommand{\FourAuthorColor}{\AuthorAColor, \AuthorBColor,
-  \AuthorCColor, \AndColor\ \AuthorDColor}%
 \newcommand{\FourAuthorShortColor}{\AuthorAShortColor,
   \AuthorBShortColor, \AuthorCShortColor, \AndColor\ \AuthorDShortColor}
-  
-\newcommand{\FiveAuthorBullet}{\AuthorA\ \textbullet\ \AuthorB\
-  \textbullet\ \AuthorC\ \textbullet\ \AuthorD \textbullet \AuthorE}%
-\newcommand{\FiveAuthor}{\AuthorA, \AuthorB, \AuthorC, \AuthorD, \& \AuthorE}%
-\newcommand{\FiveAuthorShort}{\AuthorAShort, \AuthorBShort,
-  \AuthorCShort, \AuthorDShort, \& \AuthorEShort}
-  
-  
-\newcommand{\FiveAuthorBulletColor}{\AuthorAColor\ \BulletColor\
-  \AuthorBColor\ \BulletColor\ \AuthorCColor\ \BulletColor\
-  \AuthorDColor\ \BulletColor\ \AuthorEColor}%
-\newcommand{\FiveAuthorColor}{\AuthorAColor, \AuthorBColor,
-  \AuthorCColor, \AuthorDColor, \AndColor\ \AuthorEColor}%
 \newcommand{\FiveAuthorShortColor}{\AuthorAShortColor,
   \AuthorBShortColor, \AuthorCShortColor, \AuthorDShortColor, \AndColor\ \AuthorEShortColor}  
-
+%
 
 \newcommand{\AuthorHeader}{%
   \setlength{\headheight}{13.59999pt}%
@@ -641,172 +655,78 @@
 
 % Set the author formatting for the first page according to the number
 % of authors:
-\newcommand{\FirstPageOneAuthor}{%
+\newcommand{\FirstPageAuthor}{%
   \thispagestyle{HeaderFancy}%
-  \MakeTitleOneAuthor%
+  \MakeTitleAuthor%
 }
-
-\newcommand{\FirstPageTwoAuthor}{%
-  \thispagestyle{HeaderFancy}%
-  \MakeTitleTwoAuthor%
-}
-
-\newcommand{\FirstPageThreeAuthor}{%
-  \thispagestyle{HeaderFancy}%
-  \MakeTitleThreeAuthor%
-}
-
-\newcommand{\FirstPageFourAuthor}{%
-  \thispagestyle{HeaderFancy}%
-  \MakeTitleFourAuthor%
-}
-
-\newcommand{\FirstPageFiveAuthor}{%
-  \thispagestyle{HeaderFancy}%
-  \MakeTitleFiveAuthor%
-}
-
 
 % Make the author according to the number of authors:
-\newcommand{\MakeOneAuthor}{%
+\newcommand{\MakeTitle}{%
   \AuthorPrelim%
-  \FirstPageOneAuthor%
+  \FirstPageAuthor%
 }
 
-\newcommand{\MakeTwoAuthor}{%
-  \AuthorPrelim%
-  \FirstPageTwoAuthor%
-}
-
-\newcommand{\MakeThreeAuthor}{%
-  \AuthorPrelim%
-  \FirstPageThreeAuthor%
-}
-
-\newcommand{\MakeFourAuthor}{%
-  \AuthorPrelim%
-  \FirstPageFourAuthor%
-}
-
-\newcommand{\MakeFiveAuthor}{%
-  \AuthorPrelim%
-  \FirstPageFiveAuthor%
-}
 
 % Set the author information according to the number of authors:
-\newcommand{\OneAuthorInfo}{%
+\newcommand{\AuthorInfo}{%
   \noindent \textcolor{\RuleColor}{\rule{\textwidth}{0.4pt}}
 
   {\raggedright\scriptsize
 
-    \AuthorAShortColor, \AuthorAAffiliation, \SpUrl{\AuthorAUrl}
+    \ifnum \AuthorNumber = 1
+      \AuthorAShortColor, \AuthorAAffiliation, \SpUrl{\AuthorAUrl}
+    \fi   
+    \ifnum \AuthorNumber = 2
+      \AuthorAShortColor, \AuthorAAffiliation, \SpUrl{\AuthorAUrl}
+      
+      \AuthorBShortColor, \AuthorBAffiliation, \SpUrl{\AuthorBUrl}
+    \fi   
+    \ifnum \AuthorNumber = 3
+      \AuthorAShortColor, \AuthorAAffiliation, \SpUrl{\AuthorAUrl}
+      
+      \AuthorBShortColor, \AuthorBAffiliation, \SpUrl{\AuthorBUrl}
+
+      \AuthorCShortColor, \AuthorCAffiliation, \SpUrl{\AuthorCUrl}
+    \fi   
+    \ifnum \AuthorNumber = 4
+      \AuthorAShortColor, \AuthorAAffiliation, \SpUrl{\AuthorAUrl}
+      
+      \AuthorBShortColor, \AuthorBAffiliation, \SpUrl{\AuthorBUrl}
+
+      \AuthorCShortColor, \AuthorCAffiliation, \SpUrl{\AuthorCUrl}
+      
+      \AuthorDShortColor, \AuthorDAffiliation, \SpUrl{\AuthorDUrl}
+    \fi   
+    \ifnum \AuthorNumber = 5
+      \AuthorAShortColor, \AuthorAAffiliation, \SpUrl{\AuthorAUrl}
+      
+      \AuthorBShortColor, \AuthorBAffiliation, \SpUrl{\AuthorBUrl}
+
+      \AuthorCShortColor, \AuthorCAffiliation, \SpUrl{\AuthorCUrl}
+      
+      \AuthorDShortColor, \AuthorDAffiliation, \SpUrl{\AuthorDUrl}
+
+      \AuthorEShortColor, \AuthorEAffiliation, \SpUrl{\AuthorEUrl}
+    \fi   
 
     \vspace{2mm} In \EISSeditorColorString, %\EISSeditorABCColorEdColor,
     \textcolor{\HeadingsColor}{\sffamily \EISStitlevol},
     \FirstPage--\LastPage. \EISSplace: \EISSpublisher. \
     \SpUrl{\EISSurl}
 
-    \textcopyright\ \EISSyear\ \AuthorAColor
+    \textcopyright\ \EISSyear\ \AuthorColorString
 
   }%
 }
 
-\newcommand{\TwoAuthorInfo}{%
-\noindent \textcolor{\RuleColor}{\rule{\textwidth}{0.4pt}}
-
-  {\raggedright\scriptsize
-
-    \AuthorAShortColor, \AuthorAAffiliation,
-    \SpUrl{\AuthorAUrl}
-
-    \AuthorBShortColor, \AuthorBAffiliation, \SpUrl{\AuthorBUrl}
-
-    \vspace{2mm} In \EISSeditorColorString, % \EISSeditorABColorEdColor,
-    \textcolor{\HeadingsColor}{\sffamily \EISStitlevol},
-    \FirstPage--\LastPage. \EISSplace: \EISSpublisher. \
-    \SpUrl{\EISSurl}
-
-    \textcopyright\ \EISSyear\ \TwoAuthorColor
-
-  }%
-}
-
-\newcommand{\ThreeAuthorInfo}{%
-  \noindent \textcolor{\RuleColor}{\rule{\textwidth}{0.4pt}}
-
-  {\raggedright\scriptsize
-
-    \AuthorAShortColor, \AuthorAAffiliation, \SpUrl{\AuthorAUrl}
-
-    \AuthorBShortColor, \AuthorBAffiliation, \SpUrl{\AuthorBUrl}
-
-    \AuthorCShortColor, \AuthorCAffiliation, \SpUrl{\AuthorCUrl}
-
-    \vspace{2mm} In \EISSeditorColorString, % \EISSeditorABColorEdColor,
-    \textcolor{\HeadingsColor}{\sffamily \EISStitlevol},
-    \FirstPage--\LastPage. \EISSplace: \EISSpublisher. \
-    \SpUrl{\EISSurl}
-
-    \textcopyright\ \EISSyear\ \ThreeAuthorColor
-
-  }%
-}
-
-\newcommand{\FourAuthorInfo}{%
-  \noindent \textcolor{\RuleColor}{\rule{\textwidth}{0.4pt}}
-
-  {\raggedright\scriptsize
-
-    \AuthorAShortColor, \AuthorAAffiliation, \SpUrl{\AuthorAUrl}
-
-    \AuthorBShortColor, \AuthorBAffiliation, \SpUrl{\AuthorBUrl}
-
-    \AuthorCShortColor, \AuthorCAffiliation, \SpUrl{\AuthorCUrl}
-
-    \AuthorDShortColor, \AuthorDAffiliation, \SpUrl{\AuthorDUrl}
-
-    \vspace{2mm} In \EISSeditorColorString, %\EISSeditorABColorEdColor,
-    \textcolor{\HeadingsColor}{\sffamily \EISStitlevol},
-    \FirstPage--\LastPage. \EISSplace: \EISSpublisher. \
-    \SpUrl{\EISSurl}
-
-    \textcopyright\ \EISSyear\ \FourAuthorColor
-
-  }%
-}
-
-\newcommand{\FiveAuthorInfo}{%
-  \noindent \textcolor{\RuleColor}{\rule{\textwidth}{0.4pt}}
-
-  {\raggedright\scriptsize
-
-    \AuthorAShortColor, \AuthorAAffiliation, \SpUrl{\AuthorAUrl}
-
-    \AuthorBShortColor, \AuthorBAffiliation, \SpUrl{\AuthorBUrl}
-
-    \AuthorCShortColor, \AuthorCAffiliation, \SpUrl{\AuthorCUrl}
-
-    \AuthorDShortColor, \AuthorDAffiliation, \SpUrl{\AuthorDUrl}
-
-     \AuthorEShortColor, \AuthorEAffiliation, \SpUrl{\AuthorEUrl}
-
-    \vspace{2mm} In \EISSeditorColorString, %\EISSeditorABCColorEdColor,
-    \textcolor{\HeadingsColor}{\sffamily \EISStitlevol},
-    \FirstPage--\LastPage. \EISSplace: \EISSpublisher. \
-    \SpUrl{\EISSurl}
-
-    \textcopyright\ \EISSyear\ \FiveAuthorColor
-
-  }%
-}
 
 % Make the title with one author:
-\newcommand{\MakeTitleOneAuthor}{%
+\newcommand{\MakeTitleAuthor}{%
   \noindent{\raggedright
 
     \bfseries\sffamily\Large\textcolor{\HeadingsColor}{\TitleOfPaper}
 
-    \vspace{3mm}\noindent\rmfamily\small\AuthorAColor
+    \vspace{3mm}\noindent\rmfamily\small\AuthorColorBulletString
 
   }
 
@@ -818,97 +738,10 @@
 
   }%
 
-  \OneAuthorInfo
+  \AuthorInfo
 
 }
 
-% Make the title with two authors:
-\newcommand{\MakeTitleTwoAuthor}{%
-  \noindent{\raggedright
-
-    \bfseries\sffamily\Large\textcolor{\HeadingsColor}{\TitleOfPaper}
-
-    \vspace{3mm}\noindent\rmfamily\small\TwoAuthorBulletColor
-
-  }
-
-  \reducedparagraph{Abstract}{\AbstractOfPaper}
-
-  {\raggedright
-
-    \reducedparagraph{Keywords}{\KeywordBullet}
-
-  }%
-
-  \TwoAuthorInfo
-
-}
-
-% Make the title with three authors:
-\newcommand{\MakeTitleThreeAuthor}{%
-  \noindent{\raggedright
-
-    \bfseries\sffamily\Large\textcolor{\HeadingsColor}{\TitleOfPaper}
-
-    \vspace{3mm}\noindent\rmfamily\small\ThreeAuthorBulletColor
-
-  }
-
-  \reducedparagraph{Abstract}{\AbstractOfPaper}
-
-  {\raggedright
-
-    \reducedparagraph{Keywords}{\KeywordBullet}
-
-  }%
-
-  \ThreeAuthorInfo
-
-}
-
-% Make the title with four authors:
-\newcommand{\MakeTitleFourAuthor}{%
-  \noindent{\raggedright
-
-    \bfseries\sffamily\Large\textcolor{\HeadingsColor}{\TitleOfPaper}
-
-    \vspace{3mm}\noindent\rmfamily\small\FourAuthorBulletColor
-
-  }
-
-  \reducedparagraph{Abstract}{\AbstractOfPaper}
-
-  {\raggedright
-
-    \reducedparagraph{Keywords}{\KeywordBullet}
-
-  }%
-
-  \FourAuthorInfo
-
-}
-
-% Make the title with five authors:
-\newcommand{\MakeTitleFiveAuthor}{%
-  \noindent{\raggedright
-
-    \bfseries\sffamily\Large\textcolor{\HeadingsColor}{\TitleOfPaper}
-
-    \vspace{3mm}\noindent\rmfamily\small\FiveAuthorBulletColor
-
-  }
-
-  \reducedparagraph{Abstract}{\AbstractOfPaper}
-
-  {\raggedright
-
-    \reducedparagraph{Keywords}{\KeywordBullet}
-
-  }%
-
-  \FiveAuthorInfo
-
-}
 
 % A command for setting the color of \alert{}:
 \newcommand{\AlertColor}{FRred}
