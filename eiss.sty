@@ -301,7 +301,8 @@
 % and quotation aren't flexible):
 \RequirePackage[font=small,vskip=3mm]{quoting}
 
-% Commands for the first and last names of the authors (up to four):
+% Commands for the first and last names of the authors (up to five):
+\newcommand{\AuthorNumber}{5}%
 \newcommand{\AuthorAFirstName}{AuthorA-FName}%
 \newcommand{\AuthorALastName}{AuthorA-LName}%
 \newcommand{\AuthorBFirstName}{AuthorB-FName}%
@@ -333,7 +334,7 @@
 \newcommand{\AuthorBShort}{\AuthorBFirstInitial.~\AuthorBLastName}%
 \newcommand{\AuthorCShort}{\AuthorCFirstInitial.~\AuthorCLastName}%
 \newcommand{\AuthorDShort}{\AuthorDFirstInitial.~\AuthorDLastName}%
-\newcommand{\AuthorEShort}{\AuthorEFirstInitial.~\AuthorELastName}
+\newcommand{\AuthorEShort}{\AuthorEFirstInitial.~\AuthorELastName}%
 
 % Introduce affiliations and URLs:
 \newcommand{\AuthorAAffiliation}{AuthorA-Affiliation}%
@@ -452,6 +453,24 @@
 \newcommand{\AndColor}{\textcolor{\OtherColor}{\&}}%
 \newcommand{\BulletColor}{\textcolor{\OtherColor}{\textbullet}}
 
+\newcommand{\AuthorString}{%
+  \ifnum \AuthorNumber = 1
+    \AuthorA
+  \fi
+  \ifnum \AuthorNumber = 2
+    \AuthorA \& \AuthorB
+  \fi
+  \ifnum \AuthorNumber = 3
+    \AuthorA, \AuthorB, \& \AuthorC
+  \fi  
+  \ifnum \AuthorNumber = 4
+    \AuthorA, \AuthorB, \AuthorC, \& \AuthorD
+  \fi
+  \ifnum \AuthorNumber = 5
+    \AuthorA, \AuthorB, \AuthorC, \AuthorD, \& \AuthorE
+  \fi
+  }
+
 \newcommand{\TwoAuthorBullet}{\AuthorA\ \textbullet\ \AuthorB}%
 \newcommand{\TwoAuthor}{\AuthorA\ \& \AuthorB}%
 \newcommand{\TwoAuthorShort}{\AuthorAShort\ \& \AuthorBShort}
@@ -504,49 +523,30 @@
 \newcommand{\FiveAuthorShortColor}{\AuthorAShortColor,
   \AuthorBShortColor, \AuthorCShortColor, \AuthorDShortColor, \AndColor\ \AuthorEShortColor}  
 
-% For running headers with one author and a title:
-\newcommand{\OneAuthorHeader}{%
-  \setlength{\headheight}{13.59999pt}%
-  \fancyhead[EL,OR]{\small\thepage}%
-  \fancyhead[ER]{\small\AuthorAShortColor}%
-  \fancyhead[OL]{\small\textcolor{\HeadingsColor}{\sffamily
-      \TitleOfPaperInHeader}}%
-}
 
-% For running headers with two authors and a title:
-\newcommand{\TwoAuthorHeader}{%
+\newcommand{\AuthorHeader}{%
   \setlength{\headheight}{13.59999pt}%
   \fancyhead[EL,OR]{\small\thepage}%
-  \fancyhead[ER]{\small\TwoAuthorShortColor}%
+  \fancyhead[ER]{\small
+    \ifnum \AuthorNumber = 1
+      \AuthorAShortColor
+    \fi
+    \ifnum \AuthorNumber = 2
+      \TwoAuthorShortColor
+    \fi
+    \ifnum \AuthorNumber = 3
+      \ThreeAuthorShortColor
+    \fi
+    \ifnum \AuthorNumber = 4
+      \FourAuthorShortColor
+    \fi
+    \ifnum \AuthorNumber = 5
+      \FiveAuthorShortColor
+    \fi
+    }%
   \fancyhead[OL]{\small\textcolor{\HeadingsColor}{\sffamily
       \TitleOfPaperInHeader}}%
-}
-
-% For running headers with three authors and a title:
-\newcommand{\ThreeAuthorHeader}{%
-  \setlength{\headheight}{13.59999pt}%
-  \fancyhead[EL,OR]{\small\thepage}%
-  \fancyhead[ER]{\small\ThreeAuthorShortColor}%
-  \fancyhead[OL]{\small\textcolor{\HeadingsColor}{\sffamily
-      \TitleOfPaperInHeader}}%
-}
-
-% For running headers with four authors and a title:
-\newcommand{\FourAuthorHeader}{%
-  \setlength{\headheight}{13.59999pt}%
-  \fancyhead[EL,OR]{\small\thepage}%
-  \fancyhead[ER]{\small\FourAuthorShortColor}%
-  \fancyhead[OL]{\small\textcolor{\HeadingsColor}{\sffamily
-      \TitleOfPaperInHeader}}%
-}
-
-\newcommand{\FiveAuthorHeader}{%
-  \setlength{\headheight}{13.59999pt}%
-  \fancyhead[EL,OR]{\small\thepage}%
-  \fancyhead[ER]{\small\FiveAuthorShortColor}%
-  \fancyhead[OL]{\small\textcolor{\HeadingsColor}{\sffamily
-      \TitleOfPaperInHeader}}%
-}
+  }
 
 % For the first and last pages:
 \newcommand{\FirstPage}{\pageref{PageFirst}}%
@@ -625,10 +625,12 @@
 \newcommand{\TitleOfPaperpdfinfo}{\TitleOfPaper}
 
 % Set the author preliminaries and PDF metadata for one author:
-\newcommand{\OneAuthorPrelim}{%
-  \OneAuthorHeader%
+
+\newcommand{\AuthorPrelim}{%
+  %\OneAuthorHeader%
+  \AuthorHeader%
   \hypersetup{%
-    pdfauthor={\AuthorA},%
+    pdfauthor={\AuthorString},%
     pdfkeywords={\Keywordpdfinfo},%
     pdfsubject={\EISSyear. In \EISSeditorString,
     \EISStitlevolpdfinfo. \EISSplace: \EISSpublisher. \EISSurl},%
@@ -636,54 +638,6 @@
     }
   }
 
-
-% Set the author preliminaries and PDF metadata for two authors:
-\newcommand{\TwoAuthorPrelim}{%
-  \TwoAuthorHeader%
-  \hypersetup{%
-    pdfauthor={\TwoAuthor},%
-    pdfkeywords={\Keywordpdfinfo},%
-    pdfsubject={\EISSyear. In \EISSeditorString,
-    \EISStitlevolpdfinfo. \EISSplace: \EISSpublisher. \EISSurl},%
-    pdftitle={\TitleOfPaperpdfinfo}%
-  }
-}
-
-% Set the author preliminaries and PDF metadata for three authors:
-\newcommand{\ThreeAuthorPrelim}{%
-  \ThreeAuthorHeader%
-  \hypersetup{%
-    pdfauthor={\ThreeAuthor},%
-    pdfkeywords={\Keywordpdfinfo},%
-    pdfsubject={\EISSyear. In \EISSeditorString,
-    \EISStitlevolpdfinfo. \EISSplace: \EISSpublisher. \EISSurl},%
-    pdftitle={\TitleOfPaperpdfinfo}%
-  }%
-}
-
-% Set the author preliminaries and PDF metadata for four authors:
-\newcommand{\FourAuthorPrelim}{%
-  \FourAuthorHeader%
-  \hypersetup{%
-    pdfauthor={\FourAuthor},%
-    pdfkeywords={\Keywordpdfinfo},%
-    pdfsubject={\EISSyear. In \EISSeditorString,
-    \EISStitlevolpdfinfo. \EISSplace: \EISSpublisher. \EISSurl},%
-    pdftitle={\TitleOfPaperpdfinfo}%
-  }%
-}
-
-% Set the author preliminaries and PDF metadata for five authors:
-\newcommand{\FiveAuthorPrelim}{%
-  \FiveAuthorHeader%
-  \hypersetup{%
-    pdfauthor={\FiveAuthor},%
-    pdfkeywords={\Keywordpdfinfo},%
-    pdfsubject={\EISSyear. In \EISSeditorString,
-    \EISStitlevolpdfinfo. \EISSplace: \EISSpublisher. \EISSurl},%
-    pdftitle={\TitleOfPaperpdfinfo}%
-  }%
-}
 
 % Set the author formatting for the first page according to the number
 % of authors:
@@ -715,27 +669,27 @@
 
 % Make the author according to the number of authors:
 \newcommand{\MakeOneAuthor}{%
-  \OneAuthorPrelim%
+  \AuthorPrelim%
   \FirstPageOneAuthor%
 }
 
 \newcommand{\MakeTwoAuthor}{%
-  \TwoAuthorPrelim%
+  \AuthorPrelim%
   \FirstPageTwoAuthor%
 }
 
 \newcommand{\MakeThreeAuthor}{%
-  \ThreeAuthorPrelim%
+  \AuthorPrelim%
   \FirstPageThreeAuthor%
 }
 
 \newcommand{\MakeFourAuthor}{%
-  \FourAuthorPrelim%
+  \AuthorPrelim%
   \FirstPageFourAuthor%
 }
 
 \newcommand{\MakeFiveAuthor}{%
-  \FiveAuthorPrelim%
+  \AuthorPrelim%
   \FirstPageFiveAuthor%
 }
 
