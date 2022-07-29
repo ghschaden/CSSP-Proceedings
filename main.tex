@@ -1,11 +1,12 @@
-
-% AUTHOR_master.tex
-% Prepared by C. Pinon (cjpinon@implicature.xyz) for EISS 13 (see
+% main.tex
+% Modified by Gerhard Schaden & Berthold Crysmann for EISS 14
+% Created by C. Pinon (cjpinon@implicature.xyz) for EISS 13 (see
 % https://implicature.xyz/eiss13/)
 % 2020-12-30
 % 2020-02-02
+% 2022-07-30: Breaking changes
 
-% This is the master file for your paper. This is the file that you
+% This is the main file for your paper. This is the file that you
 % should compile.
 
 \documentclass[a5paper,12pt,twoside]{article}% Please don't change
@@ -52,7 +53,7 @@
 % The official font for EISS 14 is Libertinus, which is preselected:
 
 
- \UseLibertinus
+\UseLibertinus
 
 % Alternative fonts are Latin Modern or Times:
 
@@ -425,9 +426,9 @@
 \renewcommand{\KeywordOne}{Change}
 \renewcommand{\KeywordTwo}{These}
 \renewcommand{\KeywordThree}{Keywords}
-\renewcommand{\KeywordFour}{Pulease}
-% \renewcommand{\KeywordFive}{Keyword5}
-% \renewcommand{\KeywordSix}{Keyword6}
+\renewcommand{\KeywordFour}{\emph{Pulease}}
+\renewcommand{\KeywordFive}{Kind}
+\renewcommand{\KeywordSix}{Author}
 % \renewcommand{\KeywordSeven}{Keyword7}
 % \renewcommand{\KeywordEight}{Keyword8}
 
@@ -445,7 +446,7 @@
 % \renewcommand{\KeywordOnepdfinfo}{Keyword1}
 % \renewcommand{\KeywordTwopdfinfo}{Keyword2}
 % \renewcommand{\KeywordThreepdfinfo}{Keyword3}
-% \renewcommand{\KeywordFourpdfinfo}{Keyword4}
+\renewcommand{\KeywordFourpdfinfo}{Pulease}
 % \renewcommand{\KeywordFivepdfinfo}{Keyword5}
 % \renewcommand{\KeywordSixpdfinfo}{Keyword6}
 % \renewcommand{\KeywordSevenpdfinfo}{Keyword7}
@@ -455,14 +456,9 @@
 %% Step 8c (Specify the number of keywords)
 %%%%%%%%%%
 
-% Uncomment exactly one of the following lines, depending on how many
-% keywords you specified:
-
-\UseFourKeyword
-% \UseFiveKeyword
-% \UseSixKeyword
-% \UseSevenKeyword
-% \UseEightKeyword
+% Specify how many keywords you use (minimum 4, maximum 8): 
+% Here I use 6
+\renewcommand{\NumberofKeywords}{6}
 
 %%%%%%%%%%
 %% Step 9 (The acknowledgments)

@@ -361,6 +361,11 @@
 \newcommand{\AbstractOfPaper}{This is the abstract of the paper.}
 
 % For the keywords of the paper (up to eight):
+
+% Define a number of Keywords
+\newcommand{\NumberofKeywords}{4}
+
+% Dummy Keywords:
 \newcommand{\KeywordOne}{Keyword1}%
 \newcommand{\KeywordTwo}{Keyword2}%
 \newcommand{\KeywordThree}{Keyword3}%
@@ -371,6 +376,8 @@
 \newcommand{\KeywordEight}{Keyword8}
 
 % For the keywords in the PDF metadata:
+% Notice that this is necessary if an Author wanted to emphasize a keyword
+% We don't want to end up with an \emph{} in the pdf-properties
 \newcommand{\KeywordOnepdfinfo}{\KeywordOne}%
 \newcommand{\KeywordTwopdfinfo}{\KeywordTwo}%
 \newcommand{\KeywordThreepdfinfo}{\KeywordThree}%
@@ -383,60 +390,42 @@
 % Define as a convenience:
 \newcommand{\tpc}{\textperiodcentered}
 
-% Concatenate the keywords in two ways (starting with four keywords):
-\newcommand{\FourKeywordBullet}{\KeywordOne~\tpc\ \KeywordTwo~\tpc\
-  \KeywordThree~\tpc\ \KeywordFour}%
-\newcommand{\FiveKeywordBullet}{\KeywordOne~\tpc\ \KeywordTwo~\tpc\
-  \KeywordThree~\tpc\ \KeywordFour~\tpc\ \KeywordFive}%
-\newcommand{\SixKeywordBullet}{\KeywordOne~\tpc\ \KeywordTwo~\tpc\
-  \KeywordThree~\tpc\ \KeywordFour~\tpc\ \KeywordFive~\tpc\
-  \KeywordSix}%
-\newcommand{\SevenKeywordBullet}{\KeywordOne~\tpc\ \KeywordTwo~\tpc\
-  \KeywordThree~\tpc\ \KeywordFour~\tpc\ \KeywordFive~\tpc\
-  \KeywordSix~\tpc\ \KeywordSeven}%
-\newcommand{\EightKeywordBullet}{\KeywordOne~\tpc\ \KeywordTwo~\tpc\
-  \KeywordThree~\tpc\ \KeywordFour~\tpc\ \KeywordFive~\tpc\
-  \KeywordSix~\tpc\ \KeywordSeven~\tpc\ \KeywordEight}
-
-\newcommand{\FourKeywordpdfinfo}{\KeywordOnepdfinfo, \KeywordTwopdfinfo,
-  \KeywordThreepdfinfo, \KeywordFourpdfinfo}%
-\newcommand{\FiveKeywordpdfinfo}{\KeywordOnepdfinfo, \KeywordTwopdfinfo,
-  \KeywordThreepdfinfo, \KeywordFourpdfinfo, \KeywordFivepdfinfo}%
-\newcommand{\SixKeywordpdfinfo}{\KeywordOnepdfinfo, \KeywordTwopdfinfo,
-  \KeywordThreepdfinfo, \KeywordFourpdfinfo, \KeywordFivepdfinfo,
-  \KeywordSixpdfinfo}%
-\newcommand{\SevenKeywordpdfinfo}{\KeywordOnepdfinfo,
-  \KeywordTwopdfinfo, \KeywordThreepdfinfo, \KeywordFourpdfinfo,
-  \KeywordFivepdfinfo, \KeywordSixpdfinfo, \KeywordSevenpdfinfo}%
-\newcommand{\EightKeywordpdfinfo}{\KeywordOnepdfinfo,
-  \KeywordTwopdfinfo, \KeywordThreepdfinfo, \KeywordFourpdfinfo,
-  \KeywordFivepdfinfo, \KeywordSixpdfinfo, \KeywordSevenpdfinfo,
-  \KeywordEightpdfinfo}
-
-% Define the number of keywords to be used:
-\newcommand{\UseFourKeyword}{%
-  \newcommand{\KeywordBullet}{\FourKeywordBullet}%
-  \newcommand{\Keywordpdfinfo}{\FourKeywordpdfinfo}%
+% Define the Keywords as printed on the titlepage:
+\newcommand{\KeywordBullet}{%
+  \ifnum \NumberofKeywords = 4
+    \KeywordOne~\tpc\ \KeywordTwo~\tpc\ \KeywordThree~\tpc\ \KeywordFour
+  \fi
+  \ifnum \NumberofKeywords = 5
+    \KeywordOne~\tpc\ \KeywordTwo~\tpc\ \KeywordThree~\tpc\ \KeywordFour~\tpc\ \KeywordFive
+  \fi  
+  \ifnum \NumberofKeywords = 6
+    \KeywordOne~\tpc\ \KeywordTwo~\tpc\ \KeywordThree~\tpc\ \KeywordFour~\tpc\ \KeywordFive~\tpc\ \KeywordSix
+  \fi  
+  \ifnum \NumberofKeywords = 7
+    \KeywordOne~\tpc\ \KeywordTwo~\tpc\ \KeywordThree~\tpc\ \KeywordFour~\tpc\ \KeywordFive~\tpc\ \KeywordSix~\tpc\ \KeywordSeven
+  \fi  
+  \ifnum \NumberofKeywords = 8
+    \KeywordOne~\tpc\ \KeywordTwo~\tpc\ \KeywordThree~\tpc\ \KeywordFour~\tpc\ \KeywordFive~\tpc\ \KeywordSix~\tpc\ \KeywordSeven~\tpc\ \KeywordEight
+  \fi  
 }
 
-\newcommand{\UseFiveKeyword}{%
-  \newcommand{\KeywordBullet}{\FiveKeywordBullet}%
-  \newcommand{\Keywordpdfinfo}{\FiveKeywordpdfinfo}%
-}
-
-\newcommand{\UseSixKeyword}{%
-  \newcommand{\KeywordBullet}{\SixKeywordBullet}%
-  \newcommand{\Keywordpdfinfo}{\SixKeywordpdfinfo}%
-}
-
-\newcommand{\UseSevenKeyword}{%
-  \newcommand{\KeywordBullet}{\SevenKeywordBullet}%
-  \newcommand{\Keywordpdfinfo}{\SevenKeywordpdfinfo}%
-}
-
-\newcommand{\UseEightKeyword}{%
-  \newcommand{\KeywordBullet}{\EightKeywordBullet}%
-  \newcommand{\Keywordpdfinfo}{\EightKeywordpdfinfo}%
+% Keywords that will go to the pdf-properties:
+\newcommand{\Keywordpdfinfo}{%
+  \ifnum \NumberofKeywords = 4
+    \KeywordOnepdfinfo, \KeywordTwopdfinfo, \KeywordThreepdfinfo, \KeywordFourpdfinfo
+  \fi
+  \ifnum \NumberofKeywords = 5
+    \KeywordOnepdfinfo, \KeywordTwopdfinfo, \KeywordThreepdfinfo, \KeywordFourpdfinfo, \KeywordFivepdfinfo
+  \fi  
+  \ifnum \NumberofKeywords = 6
+    \KeywordOnepdfinfo, \KeywordTwopdfinfo, \KeywordThreepdfinfo, \KeywordFourpdfinfo, \KeywordFivepdfinfo, \KeywordSixpdfinfo
+  \fi  
+  \ifnum \NumberofKeywords = 7
+    \KeywordOnepdfinfo, \KeywordTwopdfinfo, \KeywordThreepdfinfo, \KeywordFourpdfinfo, \KeywordFivepdfinfo, \KeywordSixpdfinfo, \KeywordSevenpdfinfo
+  \fi  
+  \ifnum \NumberofKeywords = 8
+    \KeywordOnepdfinfo, \KeywordTwopdfinfo, \KeywordThreepdfinfo, \KeywordFourpdfinfo, \KeywordFivepdfinfo, \KeywordSixpdfinfo, \KeywordSevenpdfinfo, \KeywordEightpdfinfo
+  \fi  
 }
 
 % Some further useful abbreviations:
