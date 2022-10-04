@@ -649,6 +649,7 @@
 
 % Set the author information according to the number of authors:
 \newcommand{\AuthorInfo}{%
+  \vspace*{-7pt}
   \noindent \textcolor{\RuleColor}{\rule{\textwidth}{0.4pt}}
 
   {\raggedright\scriptsize
@@ -705,18 +706,16 @@
   \noindent{\raggedright% 
     \bfseries\sffamily\Large\textcolor{\HeadingsColor}{\TitleOfPaper}
 
-    \vspace{3mm}\noindent\rmfamily\small\AuthorColorBulletString
-
+    \vspace{3mm}\noindent\rmfamily\small\AuthorColorBulletString%
   }
 
   \reducedparagraph{Abstract}{\AbstractOfPaper}
 
   {\raggedright
 
-    \reducedparagraph{Keywords}{\KeywordBullet}
-
+    \reducedparagraph{Keywords}{\KeywordBullet}%
   }%
-
+  
   \AuthorInfo
 
 }
