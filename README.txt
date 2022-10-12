@@ -14,13 +14,13 @@ This package consists of 12 files:
 README.txt
 lppl.txt
 eiss.sty
+cgloss.sty
 eiss13_logo_blank.pdf
 cat.png
 gl-authoryear-comp.cbx
 biblatex-gl.bbx
 main.tex
 AUTHOR_body.tex
-AUTHOR_refs.tex
 AUTHOR_bib.bib
 main.pdf
 
@@ -31,19 +31,24 @@ lppl.txt contains the package license (the LaTeX Project Public License Version 
 
 eiss.sty is the LaTeX style file for EISS 14. Please do not modify it.
 
-eiss13_logo_blank.pdf is a file containing a blank logo. It is inserted by AUTHOR_master.tex. It may be easiest to keep this file in the same directory as your TEX files.
+closs.sty is a LaTeX style file for glossing. Please do not modify it.
 
-cat.png provides an sample cat picture demonstrating how images can be included. This file can safely be removed, and should not be resubmitted.
+eiss13_logo_blank.pdf is a file containing a blank logo. It is inserted by AUTHOR_master.tex. 
+It may be easiest to keep this file in the same directory as your TEX files.
 
-gl-authoryear-comp.cbx and biblatex-gl.bbx are biblatex style files from the journal Glossa (see https://www.glossa-journal.org/). They provide the bibliographic style that you should use. These files are also available at:
+cat.png provides an sample cat picture demonstrating how images can be included. This file can 
+safely be removed, and should not be resubmitted.
+
+gl-authoryear-comp.cbx and biblatex-gl.bbx are biblatex style files from the journal Glossa (see https://www.glossa-journal.org/). They provide the bibliographic style that you should use. These 
+files are also available at:
 
 https://github.com/guidovw/Glossalatex
 
 (The files is included as a convenience. It is not clear what their license is.)
 
-main.tex, AUTHOR_body.tex, AUTHOR_refs.tex, AUTHOR_bib.bib -- these four files are to be edited for your paper:
+main.tex, AUTHOR_body.tex, AUTHOR_bib.bib -- these three files are to be edited for your paper:
 
-  - main.tex is the file in which you set 12 parameters for your
+  - main.tex is the file in which you set 11 parameters for your
   paper, as well as for loading any additional packages that you
   need. Please follow the instructions in it (it's intended to be
   self-explanatory). This is the file that you compile. The name has 
@@ -56,14 +61,15 @@ main.tex, AUTHOR_body.tex, AUTHOR_refs.tex, AUTHOR_bib.bib -- these four files a
   where you should write your main text. It's also advised to rename
   this file (by replacing "AUTHOR" with your last name).
 
-  - AUTHOR_refs.tex is the file that loads your BIB file. Please follow
-  the instructions in it. Please also rename this file accordingly. (In
-  the case of EXAMPLE_refs.tex, the BIB file loaded is EXAMPLE_bib.bib.)
-
   - AUTHOR_bib.bib will contain your bibliographical references. 
+  You can input utf-8 directly.
 
-We encourage use of unicode. For that, please make sure your source files use UTF-8 encoding. To compile your document, you should use a unicode-aware TeX engine, such as xelatex, but pdflatex is still supported. You can then directly use a wide range of Latin, Greek, and Cyrillic characters in your document, as well as the IPA.
+We encourage use of unicode. For that, please make sure your source files use UTF-8 encoding. 
+To compile your document, you should use a unicode-aware TeX engine, such as xelatex or lualatex, 
+but pdflatex is still supported. You can then directly use a wide range of Latin, Greek, and 
+Cyrillic characters in your document, as well as the IPA.
 
-Before sending the source files for your paper to the editors, please make certain that you've paid attention to the points mentioned at https://implicature.org/eiss14/latex_bibtex_advice .
+Before sending the source files for your paper to the editors, please make certain that you've paid 
+attention to the points mentioned at https://implicature.org/eiss14/latex_bibtex_advice .
 
 If you have any questions, please don't hesitate to ask. Happy LaTeXing!

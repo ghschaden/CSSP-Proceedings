@@ -20,13 +20,12 @@ syntax (or the other way around, see \citealt{Kamp:1973,Searle:1964}) \ldots
 
 For examples, use \textbf{linguex}, and for glossing morphological categories, please refer to the Leipzig Glossing Rules.
 
-\exg. 
-win er der Namen Gottes het usgsprochn-a ghabe\\
+\ex. Swiss German \citep[][346]{hodler69}\\
+\gll win er der Namen Gottes het usgsprochn-a ghabe\\
 when he the name.\textsc{m.sg} God.\textsc{gen} has pronounced-\textsc{m.sg} had\\
-%\glt 
-`once he had pronounced the name of God'
+\glt `once he had pronounced the name of God'
 
-For examples with several subexamples:
+\Next shows how you can typeset examples with several subexamples:
 
 \ex. \label{ex:1}\a. \label{ex:2}First example
 \b. Second
@@ -52,7 +51,20 @@ In order to make trees, use the \textbf{forest} package.
           [A [ joli\\\footnotesize{nice} ] ] ] ] ]
 \end{forest}
 
-You can also make a more involved example, with arrows:
+You can also make a more involved example, with arrows, as is illustrated in \NNext. Ideally, you would want to avoid big spaces (you can adjust the size of the tree, if this is necessary, as we have done in \Next for \Last).
+
+\ex. \small{
+\begin{forest}
+[S 
+  [DP [D [ Ce\\\footnotesize{This} ] ]
+      [NP [AP [A [ petit\\\footnotesize{small} ] ] ]
+          [N [ arbre\\\footnotesize{tree} ] ] ] ]
+  [VP [V [ est\\\footnotesize{is} ] ]
+      [AP [AdvP [Adv [ très\\\footnotesize{very} ] ] ]
+          [A [ joli\\\footnotesize{nice} ] ] ] ] ]
+\end{forest}
+}
+
 
 \ex.  \label{ex:rp-structure} 
 \footnotesize{%
@@ -92,11 +104,11 @@ attr2 & val2\\
 attr3 & val3]}} ] ]
 \end{forest}l
 
-And finally, for tables, we use the \textbf{booktabs}-environment, as illustrated in table \ref{tab:article-systems}. 
+For tables, we use the \textbf{booktabs}-environment, as illustrated in Table \ref{tab:article-systems}. 
 
 
 
-\textbf{Question: do we insist that tables are put in a table-environment?}
+%\textbf{Question: do we insist that tables are put in a table-environment?}
 
 \begin{table}
  \centering
@@ -121,13 +133,19 @@ And finally, you can also add figures. Figures are floats in \LaTeX{}, so they m
 \begin{figure}
     \centering
     % you might need to adjust the width of the picture
-    \includegraphics[width=1.0\textwidth]{cat.png}
-    \caption{A cute cat (not sure if this is relevant)}
+    \includegraphics[width=0.4\textwidth]{cat.png}
+    \includegraphics[width=0.4\textwidth]{cat.png}
+    \caption{A cute cat and its identical twin (not sure if this is relevant)}
     \label{fig:my_cat}
 \end{figure}
 
-As usual, you can refer back to figure \ref{fig:my_cat}.\footnote{Source of the cat: \href{https://commons.wikimedia.org/wiki/File:VAN_CAT.png}{https://commons.wikimedia.org/wiki/File:VAN\_CAT.png}.}
+As usual, you can refer back to Figure \ref{fig:my_cat}.\footnote{Source of the cat: \href{https://commons.wikimedia.org/wiki/File:VAN_CAT.png}{https://commons.wikimedia.org/wiki/File:VAN\_CAT.png}.}
 
+\section{Limitations}
+
+As of now, we only support 5 authors. If your paper has more than 5 authors, please get in touch with us.
+
+You can no longer compile to dvi. This is not something we intend to change.
 
 
 %%%%%%%%%%

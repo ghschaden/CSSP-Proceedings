@@ -263,6 +263,10 @@
 % Which we can make immediate use of:
 \newcommand{\Thanks}{We thank everyone for their kind advice.}%
 \newcommand{\MakeThanks}{\reducedparagraph{Acknowledgments}{\Thanks}}
+\newcommand{\Abbrevs}{List here the abbreviations you used in your paper. For a list of standard abbreviations, refer to the \href{https://www.eva.mpg.de/lingua/resources/glossing-rules.php}{Leipzig glossing rules}. Sort alphabetically, and indicate the abbreviations in the following format: \textsc{gen} = genitive, \textsc{m} = masculine, \textsc{sg} = singular.}%
+
+\newcommand{\MakeAbbreviations}{\reducedparagraph{Abbreviations}{\Abbrevs}}
+
 
 % For modifying lists:
 \RequirePackage{enumitem}%
@@ -737,6 +741,7 @@
 % For linguex:
 \newcommand{\UseLinguex}{%
   \RequirePackage{linguex}%
+  \RequirePackage{cgloss}%
   \renewcommand{\firstrefdash}{} % For (1a) instead of (1-a)
   \setlength{\Extopsep}{3mm}%
   \let\eachwordone=\it %

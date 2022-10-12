@@ -61,37 +61,15 @@
 % \UseTimes
 
 % (Don't select Latin Modern or Times for EISS 13 unless the use of
-% Utopia presents a problem. Note that ONLY ONE of these three font
+% Ibertinus presents a problem. Note that ONLY ONE of these three font
 % options should be selected.)
 
 %%%%%%%%%%
-%% Step 2 (The input encoding)
-%%%%%%%%%%
-
-% Note: If you're using a version of LaTeX from 2018/04/01 or later,
-% then UTF-8 is the default input encoding and it's no longer necessary
-% to set the input encoding to utf8 explicitly.
-
-% If you're directly inserting only ASCII (basically: non-accented)
-% characters, then you don't have to explicitly set an input encoding,
-% and you can go to step 3! If you're directly inserting some non-ASCII
-% (accented) characters, then you have to choose an input
-% encoding. Nowadays, the standard choice of non-ASCII input encoding is
-% utf8. If you want to use this or another input encoding, uncomment the
-% following line and specify the encoding that you want to use (and then
-% make sure that you save your file in this encoding):
-
-% \usepackage[utf8]{inputenc}
-
-% (Some popular legacy encodings are latin1, latin2, latin9, cp1252, and
-% cp1250.)
-
-%%%%%%%%%%
-%% Step 3 (The title; there are potentially three substeps)
+%% Step 2 (The title; there are potentially three substeps)
 %%%%%%%%%%
 
 %%%%%%%%%%
-%% Step 3a (The title of the paper on the first page)
+%% Step 2a (The title of the paper on the first page)
 %%%%%%%%%%
 
 % Uncomment the following line and specify the title of your paper
@@ -104,10 +82,10 @@
 \renewcommand{\TitleOfPaperInHeader}{This Title Needs Changed}
 
 %%%%%%%%%%
-%% Step 3b (The title of the paper in the PDF metadata)
+%% Step 2b (The title of the paper in the PDF metadata)
 %%%%%%%%%%
 
-% If the title of the paper on the first page (specified in step 3a)
+% If the title of the paper on the first page (specified in step 2a)
 % contains "\\" or an emphasized/italicized expression, then uncomment
 % the following line and specify the title of the paper without "\\" and
 % without an emphasized/italicized expression:
@@ -116,10 +94,10 @@
 
 % (If the title of the paper specified in step 3a doesn't contain "\\"
 % or emphasis/italics, then there's no need to set this and you can go
-% to step 3c!)
+% to step 2c!)
 
 %%%%%%%%%%
-%% Step 3c (The title of the paper in the running headers, if different)
+%% Step 2c (The title of the paper in the running headers, if different)
 %%%%%%%%%%
 
 % If the title of the paper in the running headers differs from the
@@ -136,15 +114,15 @@
 % should be specified here.)
 
 %%%%%%%%%%
-%% Step 4 (The authors; there are up to five substeps, depending on the
+%% Step 3 (The authors; there are up to five substeps, depending on the
 %% number of authors)
 %%%%%%%%%%
 
-% First of all, how may authors do we have:
+% First of all, how may authors does this paper have:
 \renewcommand{\AuthorNumber}{5}
 
 %%%%%%%%%%
-%% Step 4a (The FIRST author)
+%% Step 3a (The FIRST author)
 %%%%%%%%%%
 
 % Uncomment the following line and specify the first name of the first
@@ -185,7 +163,7 @@
 \renewcommand{\AuthorAUrl}{anonymous.coward@utopian-atlantis.edu}
 
 %%%%%%%%%%
-%% Step 4b (The SECOND author, if there is one; if not, go to step 5!)
+%% Step 3b (The SECOND author, if there is one; if not, go to step 5!)
 %%%%%%%%%%
 
 % Uncomment the following line and specify the first name of the second
@@ -216,7 +194,7 @@
 \renewcommand{\AuthorBUrl}{jane.roe@scotus.edu}
 
 %%%%%%%%%%
-%% Step 4c (The THIRD author, if there is one; if not, go to step 5!)
+%% Step 3c (The THIRD author, if there is one; if not, go to step 5!)
 %%%%%%%%%%
 
 % Uncomment the following line and specify the first name of the third
@@ -247,7 +225,7 @@
 \renewcommand{\AuthorCUrl}{mick@stones.edu}
 
 %%%%%%%%%%
-%% Step 4d (The FOURTH author, if there is one; if not, go to step 5!)
+%% Step 3d (The FOURTH author, if there is one; if not, go to step 5!)
 %%%%%%%%%%
 
 % Uncomment the following line and specify the first name of the fourth
@@ -278,7 +256,7 @@
 \renewcommand{\AuthorDUrl}{doe@ignota.edu}
 
 %%%%%%%%%%
-%% Step 4e (The FIFTH author, if there is one; if not, go to step 5!)
+%% Step 3e (The FIFTH author, if there is one; if not, go to step 5!)
 %%%%%%%%%%
 
 % Uncomment the following line and specify the first name of the fifth
@@ -310,34 +288,16 @@
 
 
 %%%%%%%%%%
-%% Step 5 (Linguistic examples)
+%% Step 4 (Linguistic examples)
 %%%%%%%%%%
 
-% If you want to use phonetic (IPA) symbols in your linguistic examples,
-% uncomment the following line to use the package tipa:
-
-% \UseTipa
-
-% linguex and expex are two well-known packages for formatting
-% linguistic examples. If you wish to use one of these, uncomment the
-% appropriate line below:
+% We use Linguex in order to typeset linguistic examples
 
 \UseLinguex
 
-% \UseExpex
-
-% If your paper contains many glossed examples, you may choose expex
-% with a smaller font size instead in order to save some space:
-
-% \UseExpexSmall
-
-% But note that standard choice is \UseExpex and not \UseExpexSmall.
-
-% If you prefer to use a different package for formatting linguistic
-% examples, please specify it in the next step.
 
 %%%%%%%%%%
-%% Step 6 (Packages or definitions that you need)
+%% Step 5 (Packages or definitions that you need)
 %%%%%%%%%%
 
 % Include here any \usepackage statements or definitions that you need
@@ -345,19 +305,6 @@
 % NEED (and recall the list of already loaded packages given
 % above). Note that the fonts, margins, etc. have already been set, so
 % please don't try to override these.
-
-% Please don't use hyperref! But remember to use \url{} for any URLs in
-% your main text!
-
-% Some suggestions:
-
-% For extra LaTeX math symbols:
-
-% \usepackage{latexsym}
-
-% A well-known package for drawing syntactic trees:
-
-% \usepackage[nocenter]{qtree}
 
 % Add packages and definitions (again, only those that you really need
 % for this paper!):
@@ -370,7 +317,7 @@
 
 
 %%%%%%%%%%
-%% Nothing more to do here -- go to step 7!
+%% Nothing more to do here -- go to step 6!
 %%%%%%%%%%
 
 % Eventually we'll add a visible logo (please don't change):
@@ -389,8 +336,10 @@
 \addbibresource{AUTHOR_bib.bib}
 
 \begin{document}% Please don't change
-
-\linenumbers
+%%  The following line will put linenumbers next to your lines; 
+%%  we will use this for proofreading, but you can disable this by
+%% commenting it out and remove the comment from \nolinenumbers
+\linenumbers 
 % \nolinenumbers
 
 \label{PageFirst}% Please don't change
@@ -408,7 +357,7 @@
 % \setcounter{page}{137}
 
 %%%%%%%%%%
-%% Step 7 (The abstract)
+%% Step 6 (The abstract)
 %%%%%%%%%%
 
 % Uncomment the following line and give your abstract (if necessary,
@@ -418,11 +367,11 @@
 \renewcommand{\AbstractOfPaper}{The abstract of your paper goes here.}
 
 %%%%%%%%%%
-%% Step 8 (The keywords; there are potentially three substeps)
+%% Step 7 (The keywords; there are potentially three substeps)
 %%%%%%%%%%
 
 %%%%%%%%%%
-%% Step 8a (Specify the keywords)
+%% Step 7a (Specify the keywords)
 %%%%%%%%%%
 
 % Uncomment at least the first FOUR of the following lines and specify
@@ -439,7 +388,7 @@
 % \renewcommand{\KeywordEight}{Keyword8}
 
 %%%%%%%%%%
-%% Step 8b (Specify the keywords in the PDF metainfo)
+%% Step 7b (Specify the keywords in the PDF metainfo)
 %%%%%%%%%%
 
 % IF any of the keywords just specified (in Step 8a) is
@@ -459,7 +408,7 @@
 % \renewcommand{\KeywordEightpdfinfo}{Keyword8}
 
 %%%%%%%%%%
-%% Step 8c (Specify the number of keywords)
+%% Step 7c (Specify the number of keywords)
 %%%%%%%%%%
 
 % Specify how many keywords you use (minimum 4, maximum 8): 
@@ -467,15 +416,15 @@
 \renewcommand{\NumberofKeywords}{6}
 
 %%%%%%%%%%
-%% Step 9 (The acknowledgments)
+%% Step 8 (The acknowledgments)
 %%%%%%%%%%
 
 % Uncomment the following line and give your acknowledgments:
 
-% \renewcommand{\Thanks}{Your acknowledgments go here.}
+\renewcommand{\Thanks}{We thank everyone for their kind advice.}
 
 %%%%%%%%%%
-%% Step 10 (Make the title, authors, etc.)
+%% Step 9 (Make the title, authors, etc.)
 %%%%%%%%%%
 
 \MakeTitle % Please don't change
@@ -490,6 +439,12 @@
 \input{AUTHOR_body.tex}
 
 %%%%%%%%%%
+%% Abbreviations
+%%%%%%%%%
+% If you don't need this, comment out the following line:
+\MakeAbbreviations
+
+%%%%%%%%%%
 %% Nothing more to do here -- go to step 12!
 %%%%%%%%%%
 
@@ -498,13 +453,15 @@
 \MakeThanks% Please don't change
 
 %%%%%%%%%%
-%% Step 12 (Input the author refs-file)
+%% Step 11 (Bibliography)
 %%%%%%%%%%
 
-% Uncomment the following line and specify the name of the author
-% refs-file to be inserted:
+% The following command prints your bibliography
+% Please do not touch this line
+\printbibliography
 
-\input{AUTHOR_refs.tex}
+% Please be sure to always use an n-dash (--) for page intervals in your
+% BIB file. For example, write "1--24" and not "1-24".
 
 %%%%%%%%%%
 %% Nothing more to do in this file! :-)
