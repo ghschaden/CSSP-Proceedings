@@ -36,7 +36,7 @@ cgloss.sty is a LaTeX style file for glossing. Please do not modify it.
 eiss13_logo_blank.pdf is a file containing a blank logo. It is inserted by main.tex. 
 It may be easiest to keep this file in the same directory as your TEX files.
 
-cat.png provides an sample cat picture demonstrating how images can be included. This file can 
+cat.png provides a sample cat picture demonstrating how images can be included. This file can 
 safely be removed, and should not be resubmitted.
 
 gl-authoryear-comp.cbx and biblatex-gl.bbx are biblatex style files from the journal Glossa (see https://www.glossa-journal.org/). They provide the bibliographic style that you should use. These 
