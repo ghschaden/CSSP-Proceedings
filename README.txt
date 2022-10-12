@@ -44,7 +44,7 @@ files are also available at:
 
 https://github.com/guidovw/Glossalatex
 
-(The files is included as a convenience. It is not clear what their license is.)
+(These files are included as a convenience. It is not clear what their license is.)
 
 main.tex, AUTHOR_body.tex, AUTHOR_bib.bib -- these three files are to be edited for your paper:
 
