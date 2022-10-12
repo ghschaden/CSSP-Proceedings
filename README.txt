@@ -31,9 +31,9 @@ lppl.txt contains the package license (the LaTeX Project Public License Version 
 
 eiss.sty is the LaTeX style file for EISS 14. Please do not modify it.
 
-closs.sty is a LaTeX style file for glossing. Please do not modify it.
+cgloss.sty is a LaTeX style file for glossing. Please do not modify it.
 
-eiss13_logo_blank.pdf is a file containing a blank logo. It is inserted by AUTHOR_master.tex. 
+eiss13_logo_blank.pdf is a file containing a blank logo. It is inserted by main.tex. 
 It may be easiest to keep this file in the same directory as your TEX files.
 
 cat.png provides an sample cat picture demonstrating how images can be included. This file can 
