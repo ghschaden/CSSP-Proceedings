@@ -741,11 +741,22 @@
 % For linguex:
 \newcommand{\UseLinguex}{%
   \RequirePackage{linguex}%
-  \RequirePackage{cgloss}%
+  \RequirePackage{cgloss4e}%
   \renewcommand{\firstrefdash}{} % For (1a) instead of (1-a)
   \setlength{\Extopsep}{3mm}%
   \let\eachwordone=\it %
+  \makeatletter
+\patchcmd{\gll}% The command to be patched
+  {\begin{flushleft}}% Code to be replaced
+  {\begingroup\raggedright}% New code
+  {}{}
+\patchcmd{\gl@stop}% The command to be patched
+  {\end{flushleft}}% Code to be replaced
+  {\par\endgroup}% New code
+  {}{}
+\makeatother
 }
+
 % For expex:
 \newcommand{\UseExpex}{%
   \RequirePackage{expex}%
