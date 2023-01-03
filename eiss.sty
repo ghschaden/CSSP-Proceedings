@@ -83,6 +83,8 @@
     \usepackage[noenc]{tipa} %
  \else %
     \usepackage{fontspec} %
+    \def\XeTeXpicfile{}%so can compile with LuaLatex
+    \usepackage{xunicode} %
     \usepackage{unicode-math} %
     \setmainfont[Ligatures=TeX, %
        BoldSlantedFont = {LibertinusSerif-Bold.otf}, %
@@ -105,11 +107,6 @@
      ]{FiraSans-Regular.otf} %
     \setmonofont[Scale=.825 %
      ]{FiraMono-Regular.otf}
-  \ifxetex
-     \usepackage{xunicode} %
-  \else
-     \usepackage[noenc]{tipa} %
-  \fi
 \fi %
 %%% End xetex or pdftex
 }
