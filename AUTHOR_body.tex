@@ -44,6 +44,16 @@ This is a beautiful example with a gloss.\\
 
 You can refer back to examples like \ref{ex:1} and \ref{ex:2}.
 
+\subsection{IPA \& Unicode}
+\label{sec:IPA}
+
+If you use \texttt{xelatex} or \texttt{lualatex} as your TeX engine, you have direct access
+to the entire rich set of Latin script unicode characters. This includes (but is by no means limited to) IPA.
+You may even use TIPA macros to input IPA characters, as an
+alternative to inputting unicode characters directly, e.g.
+\verb|\textturna\textipa{ES}| will yield \textturna\textipa{ES},
+correctly using your main font. 
+
 \subsection{Trees}
 
 In order to make trees, use the \textbf{forest} package.
