@@ -92,8 +92,10 @@ You can also make a more involved example, with arrows, as is illustrated in \NN
     % and now, we draw some arrows  
    \draw[->,color=red,very thick,dotted] (source) to[out=east,in=south east] (c1);
    \draw[->,color=blue,ultra thick,dashed] (c1) to[out=east,in=south east] (c2);
-   \draw[-{Latex[length=2.5mm]},color=purple,ultra thick] (cellar) to[out=east,in=east]  
-                        node [below, sloped] (TextNode2) {because why the hell not} (top);
+   \draw [-{Latex[length=2.5mm]},color=purple,ultra thick,%
+          postaction={decorate,decoration={text along path,%
+          text align=center,raise=-2.5ex, text color = purple,%
+          text={{Because why the hell not}}}}] (cellar) to[out=east,in=east] (top);
 \end{forest}}
 
 
