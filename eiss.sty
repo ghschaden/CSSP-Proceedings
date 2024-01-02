@@ -1,10 +1,11 @@
 % eiss.sty
+% Copyright 2024 Gabriela Bilbiie & Gerhardq Schaden
 % Copyright 2022 Berthold Crysmann & Gerhard Schaden
 % 2022-07-29 v4.0
 % Copyright 2020 Christopher Pinon
 % 2020-12-30 v3.2a
 % 2020-02-02 v3.2
-% LaTeX template for EISS 14
+% LaTeX template for EISS 15
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% ATTENTION: Version 4.0 breaks compatibility with previous versions!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -26,8 +27,8 @@
 %
 % This work has the LPPL maintenance status 'maintained'.
 % 
-% The Current Maintainer of this work is Christopher Pinon
-% (cjpinon@implicature.xyz).
+% The Current Maintainer of this work is Gerhard Schaden
+% (gerhard.schaden@univ-lille.fr).
 
 % This work consists of the files:
 
@@ -35,7 +36,7 @@
 % eiss13_logo_blank.[eps|pdf], eiss.sty, EXAMPLE_bib.bib,
 % EXAMPLE_[body|master|refs].tex, EXAMPLE_master.pdf, README.txt
 
-% This is a LaTeX template for EISS 14 (= Empirical Issues in Syntax and
+% This is a LaTeX template for EISS 15 (= Empirical Issues in Syntax and
 % Semantics 14). See https://implicature.org/eiss14/ for more
 % information.
 
@@ -48,10 +49,11 @@
 % 2022-02-11 modified for LuaLaTeX compatilibity 
 % 2022-05-13 modified to support 5 authors
 % 2022-07-29 cleanup for better maintainability
+% 2024-01-02 modifications for EISS 15
 
 % Let's begin:
 \NeedsTeXFormat{LaTeX2e}[2015/10/01]%
-\ProvidesPackage{eiss}[2022/02/22 v3.3a LaTeX template for EISS 14]
+\ProvidesPackage{eiss}[2024/01/02 v4.1 LaTeX template for EISS 15]
 
 \RequirePackage{microtype}
 
@@ -544,10 +546,9 @@
 
 % Some useful commands:
 \newcommand{\EISS}{EISS}%
-\newcommand{\numberofEds}{3}%
+\newcommand{\numberofEds}{2}%
 \newcommand{\EISSeditorA}{Gabriela Bîlbîie}%
-\newcommand{\EISSeditorB}{Berthold Crysmann}%
-\newcommand{\EISSeditorC}{Gerhard Schaden}%
+\newcommand{\EISSeditorB}{Gerhard Schaden}%
 \newcommand{\EISSeditorAColor}{\textcolor{\AuthorsColor}{\EISSeditorA}}%
 \newcommand{\EISSeditorBColor}{\textcolor{\AuthorsColor}{\EISSeditorB}}%
 \newcommand{\EISSeditorCColor}{\textcolor{\AuthorsColor}{\EISSeditorC}}%
@@ -586,12 +587,12 @@
   \fi        
  }
 % Will eventually be replaced by a visible logo, but blank for now:
-\newcommand{\EISSlogo}{\includegraphics{eiss13_logo_blank}}%
+\newcommand{\EISSlogo}{\includegraphics{eiss15_logo_blank}}%
 \newcommand{\EISSplace}{Paris}%
 \newcommand{\EISSpublisher}{CSSP}%
 \newcommand{\EISStitle}{Empirical Issues in Syntax and Semantics}%
-\newcommand{\EISSurl}{http://www.cssp.cnrs.fr/eiss14/}%
-\newcommand{\EISSvol}{14}%
+\newcommand{\EISSurl}{http://www.cssp.cnrs.fr/eiss15/}%
+\newcommand{\EISSvol}{15}%
 \newcommand{\EISSyear}{202X}%
 \newcommand{\EISStitlevol}{\EISStitle\ \EISSvol}%
 \newcommand{\EISStitlevolpdfinfo}{\EISStitlevol\ (\EISS\ \EISSvol)}

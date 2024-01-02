@@ -6,8 +6,9 @@ https://implicature.xyz/eiss13/)
 Modified by B. Crysmann and G. Schaden for EISS 14.
 2022-07-02 v. 3.3
 2022-07-29 v. 4.0 (breaking changes to user interface)
+2024-01-02 v. 4.1 (modifications for EISS 15)
 
-This is a LaTeX template package for EISS, for either pdflatex, xelatex or lualatex as the typesetting engine (we recommend the use of xelatex). As of EISS 14, latex with dvi output is no longer supported. 
+This is a LaTeX template package for EISS, for either pdflatex, xelatex or lualatex as the typesetting engine (we recommend the use of lualatex). As of EISS 14, latex with dvi output is no longer supported. 
 
 This package consists of 12 files:
 
@@ -15,7 +16,7 @@ README.txt
 lppl.txt
 eiss.sty
 cgloss.sty
-eiss13_logo_blank.pdf
+eiss15_logo_blank.pdf
 cat.png
 gl-authoryear-comp.cbx
 biblatex-gl.bbx
@@ -29,11 +30,11 @@ You're reading README.txt. :-)
 
 lppl.txt contains the package license (the LaTeX Project Public License Version 1.3c).
 
-eiss.sty is the LaTeX style file for EISS 14. Please do not modify it.
+eiss.sty is the LaTeX style file for EISS 15. Please do not modify it.
 
 cgloss.sty is a LaTeX style file for glossing. Please do not modify it.
 
-eiss13_logo_blank.pdf is a file containing a blank logo. It is inserted by main.tex. 
+eiss15_logo_blank.pdf is a file containing a blank logo. It is inserted by main.tex. 
 It may be easiest to keep this file in the same directory as your TEX files.
 
 cat.png provides a sample cat picture demonstrating how images can be included. This file can 
@@ -70,6 +71,6 @@ but pdflatex is still supported. You can then directly use a wide range of Latin
 Cyrillic characters in your document, as well as the IPA.
 
 Before sending the source files for your paper to the editors, please make certain that you've paid 
-attention to the points mentioned at https://implicature.org/eiss14/latex_bibtex_advice .
+attention to the points mentioned at https://implicature.org/eiss14/latex_bibtex_advice, and which remain valid for EISS 15.
 
 If you have any questions, please don't hesitate to ask. Happy LaTeXing!

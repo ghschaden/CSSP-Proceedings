@@ -1,10 +1,12 @@
 % main.tex
+% Modified by Gerhard Schaden for EISS 15
 % Modified by Gerhard Schaden & Berthold Crysmann for EISS 14
 % Created by C. Pinon (cjpinon@implicature.xyz) for EISS 13 (see
 % https://implicature.xyz/eiss13/)
 % 2020-12-30
 % 2020-02-02
 % 2022-07-30: Breaking changes
+% 2024-01-02: Changes to adapt to EISS 15
 
 % This is the main file for your paper. This is the file that you
 % should compile.
@@ -31,8 +33,6 @@
 % fourier
 % geometry
 % graphicx
-% ifpdf
-% natbib
 % quoting
 % textcomp
 % theorem
@@ -41,35 +41,30 @@
 % xcolor
 % zlmtt
 
-%%%%%%%%%%
-%% In order to use this file as intended, you need to complete the
-%% following 12 steps. (It should go quickly!)
-%%%%%%%%%%
-
-%%%%%%%%%%
-%% Step 1 (The font)
-%%%%%%%%%%
-
-% The official font for EISS 14 is Libertinus, which is preselected:
-
-
+% Setting up some basic packages; do not change
 \UseLibertinus
+\UseLinguex
+% For the watermarks (until the final version):
+\usepackage[firstpage]{draftwatermark}% Please don't change
+% \usepackage{draftwatermark}%
+\SetWatermarkFontSize{2.6cm}%
+\SetWatermarkText{\shortstack{Draft\\ \today}}%
+% \SetWatermarkText{\shortstack{Uncorrected \\ Proof \\ \today}}%
+% \SetWatermarkText{\shortstack{Example\\ \today}}%
+% \SetWatermarkText{\shortstack{Preview\\ \today}}
 
-% Alternative fonts are Latin Modern or Times:
+%%%%%%%%%% 
+%% In order to use this file as intended, you need to complete the
+%% following 9 steps. (It should go quickly!)
+%%%%%%%%%%
 
-% \UseLatinModern
-% \UseTimes
-
-% (Don't select Latin Modern or Times for EISS 13 unless the use of
-% Ibertinus presents a problem. Note that ONLY ONE of these three font
-% options should be selected.)
 
 %%%%%%%%%%
-%% Step 2 (The title; there are potentially three substeps)
+%% Step 1 (The title; there are potentially three substeps)
 %%%%%%%%%%
 
 %%%%%%%%%%
-%% Step 2a (The title of the paper on the first page)
+%% Step 1a (The title of the paper on the first page)
 %%%%%%%%%%
 
 % Uncomment the following line and specify the title of your paper
@@ -82,7 +77,7 @@
 \renewcommand{\TitleOfPaperInHeader}{This Title Needs Changed}
 
 %%%%%%%%%%
-%% Step 2b (The title of the paper in the PDF metadata)
+%% Step 1b (The title of the paper in the PDF metadata)
 %%%%%%%%%%
 
 % If the title of the paper on the first page (specified in step 2a)
@@ -94,10 +89,10 @@
 
 % (If the title of the paper specified in step 3a doesn't contain "\\"
 % or emphasis/italics, then there's no need to set this and you can go
-% to step 2c!)
+% to step 1c!)
 
 %%%%%%%%%%
-%% Step 2c (The title of the paper in the running headers, if different)
+%% Step 1c (The title of the paper in the running headers, if different)
 %%%%%%%%%%
 
 % If the title of the paper in the running headers differs from the
@@ -114,15 +109,16 @@
 % should be specified here.)
 
 %%%%%%%%%%
-%% Step 3 (The authors; there are up to five substeps, depending on the
+%% Step 2 (The authors; there are up to five substeps, depending on the
 %% number of authors)
 %%%%%%%%%%
 
 % First of all, how may authors does this paper have:
 \renewcommand{\AuthorNumber}{5}
+% If you indicate more authors than the number set here, these authors will simply be ignored.
 
 %%%%%%%%%%
-%% Step 3a (The FIRST author)
+%% Step 2a (The FIRST author)
 %%%%%%%%%%
 
 % Uncomment the following line and specify the first name of the first
@@ -163,7 +159,7 @@
 \renewcommand{\AuthorAUrl}{anonymous.coward@utopian-atlantis.edu}
 
 %%%%%%%%%%
-%% Step 3b (The SECOND author, if there is one; if not, go to step 5!)
+%% Step 2b (The SECOND author, if there is one; if not, go to step 5!)
 %%%%%%%%%%
 
 % Uncomment the following line and specify the first name of the second
@@ -194,7 +190,7 @@
 \renewcommand{\AuthorBUrl}{jane.roe@scotus.edu}
 
 %%%%%%%%%%
-%% Step 3c (The THIRD author, if there is one; if not, go to step 5!)
+%% Step 2c (The THIRD author, if there is one; if not, go to step 5!)
 %%%%%%%%%%
 
 % Uncomment the following line and specify the first name of the third
@@ -225,7 +221,7 @@
 \renewcommand{\AuthorCUrl}{mick@stones.edu}
 
 %%%%%%%%%%
-%% Step 3d (The FOURTH author, if there is one; if not, go to step 5!)
+%% Step 2d (The FOURTH author, if there is one; if not, go to step 5!)
 %%%%%%%%%%
 
 % Uncomment the following line and specify the first name of the fourth
@@ -256,7 +252,7 @@
 \renewcommand{\AuthorDUrl}{doe@ignota.edu}
 
 %%%%%%%%%%
-%% Step 3e (The FIFTH author, if there is one; if not, go to step 5!)
+%% Step 2e (The FIFTH author, if there is one; if not, go to step 5!)
 %%%%%%%%%%
 
 % Uncomment the following line and specify the first name of the fifth
@@ -288,16 +284,7 @@
 
 
 %%%%%%%%%%
-%% Step 4 (Linguistic examples)
-%%%%%%%%%%
-
-% We use Linguex in order to typeset linguistic examples
-
-\UseLinguex
-
-
-%%%%%%%%%%
-%% Step 5 (Packages or definitions that you need)
+%% Step 3 (Packages or definitions that you need)
 %%%%%%%%%%
 
 % Include here any \usepackage statements or definitions that you need
@@ -307,7 +294,8 @@
 % please don't try to override these.
 
 % Add packages and definitions (again, only those that you really need
-% for this paper!):
+% for this paper!). The following is required for compiling this file,
+% but they can be removed if you don't need them:
 
 \usepackage[linguistics]{forest}
 \usepackage{booktabs}
@@ -316,22 +304,13 @@
 \usetikzlibrary{arrows.meta,decorations.text}
 
 %%%%%%%%%%
-%% Nothing more to do here -- go to step 6!
+%% Nothing more to do here -- go to step 4!
 %%%%%%%%%%
 
-% Eventually we'll add a visible logo (please don't change):
-% \renewcommand{\EISSlogo}{\includegraphics{eiss13_logo}}
-
-% For the watermarks (until the final version):
-\usepackage[firstpage]{draftwatermark}% Please don't change
-% \usepackage{draftwatermark}%
-\SetWatermarkFontSize{2.6cm}%
-\SetWatermarkText{\shortstack{Draft\\ \today}}%
-% \SetWatermarkText{\shortstack{Uncorrected \\ Proof \\ \today}}%
-% \SetWatermarkText{\shortstack{Example\\ \today}}%
-% \SetWatermarkText{\shortstack{Preview\\ \today}}
-
-%% Set up the bibliography:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Step 4: Set up the bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Change the following conforming to your name:
 \addbibresource{AUTHOR_bib.bib}
 
 \begin{document}% Please don't change
@@ -356,7 +335,7 @@
 % \setcounter{page}{137}
 
 %%%%%%%%%%
-%% Step 6 (The abstract)
+%% Step 5 (The abstract)
 %%%%%%%%%%
 
 % Uncomment the following line and give your abstract (if necessary,
@@ -366,11 +345,11 @@
 \renewcommand{\AbstractOfPaper}{The abstract of your paper goes here.}
 
 %%%%%%%%%%
-%% Step 7 (The keywords; there are potentially three substeps)
+%% Step 6 (The keywords; there are potentially three substeps)
 %%%%%%%%%%
 
 %%%%%%%%%%
-%% Step 7a (Specify the keywords)
+%% Step 6a (Specify the keywords)
 %%%%%%%%%%
 
 % Uncomment at least the first FOUR of the following lines and specify
@@ -387,10 +366,10 @@
 % \renewcommand{\KeywordEight}{Keyword8}
 
 %%%%%%%%%%
-%% Step 7b (Specify the keywords in the PDF metainfo)
+%% Step 6b (Specify the keywords in the PDF metainfo)
 %%%%%%%%%%
 
-% IF any of the keywords just specified (in Step 8a) is
+% IF any of the keywords just specified (in Step 5a) is
 % EMPHASIZED/ITALICIZED, then give those keyword(s) again by
 % uncommenting the relevant line(s) below and specifying those
 % keyword(s) without emphasis/italics. If none of your keywords are
@@ -407,15 +386,15 @@
 % \renewcommand{\KeywordEightpdfinfo}{Keyword8}
 
 %%%%%%%%%%
-%% Step 7c (Specify the number of keywords)
+%% Step 6c (Specify the number of keywords)
 %%%%%%%%%%
 
 % Specify how many keywords you use (minimum 4, maximum 8): 
-% Here I use 6
+% Here we use 6
 \renewcommand{\NumberofKeywords}{6}
 
 %%%%%%%%%%
-%% Step 8 (The acknowledgments)
+%% Step 7 (The acknowledgments)
 %%%%%%%%%%
 
 % Uncomment the following line and give your acknowledgments:
@@ -423,36 +402,40 @@
 \renewcommand{\Thanks}{We thank everyone for their kind advice.}
 
 %%%%%%%%%%
-%% Step 9 (Make the title, authors, etc.)
+%% Nothing more to do here -- go to step 8!
 %%%%%%%%%%
 
-\MakeTitle % Please don't change
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Please don't change the following:
+\MakeTitle 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%
-%% Step 11 (Input the author body-file)
+%% Step 8 (Input the author body-file)
 %%%%%%%%%%
 
-% Uncomment the following line and specify the name of the author
-% body-file to be inserted:
+% Change the name of the author body-file to be inserted:
 
 \input{AUTHOR_body.tex}
 
 %%%%%%%%%%
-%% Abbreviations
-%%%%%%%%%
-% If you don't need this, comment out the following line:
-\MakeAbbreviations
+%% Nothing more to do here -- go to step 9!
+%%%%%%%%%%
 
-%%%%%%%%%%
-%% Nothing more to do here -- go to step 12!
-%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Please don't change the following:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Abbreviations go before the acknowledgments, and after the main text:
+
+\MakeAbbreviations
 
 % The acknowledgments appear just before the references:
 
 \MakeThanks% Please don't change
 
 %%%%%%%%%%
-%% Step 11 (Bibliography)
+%% Step 9 (Bibliography)
 %%%%%%%%%%
 
 % The following command prints your bibliography
@@ -475,6 +458,6 @@
 %%%%%%%%%%
 
 %%% Local Variables:
-%%% mode: latex
+%%% mode: lualatex
 %%% TeX-master: t
 %%% End:
