@@ -66,7 +66,7 @@ attention to the points mentioned at https://implicature.org/eiss14/latex_bibtex
 
 If you have any questions, please don't hesitate to ask. Happy LaTeXing!
 
-** Changelog
+## Changelog
 
 - Created by Christopher Piñon for EISS 13
 - Modified by Gerhard Schaden & Berthold Crysmann for EISS 14
