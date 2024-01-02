@@ -3,7 +3,7 @@
 A LaTeX template package for EISS, for either pdflatex, xelatex or lualatex as the typesetting engine (we recommend the use of lualatex). As of EISS 14, latex with dvi output is no longer supported. 
 
 This package consists of 12 files:
-- README.txt
+- README.md
 - lppl.txt
 - eiss.sty
 - cgloss.sty
@@ -65,3 +65,9 @@ Before sending the source files for your paper to the editors, please make certa
 attention to the points mentioned at https://implicature.org/eiss14/latex_bibtex_advice, and which remain valid for EISS 15.
 
 If you have any questions, please don't hesitate to ask. Happy LaTeXing!
+
+** Changelog
+
+- Created by Christopher Piñon for EISS 13
+- Modified by Gerhard Schaden & Berthold Crysmann for EISS 14
+- Modified by Gerhard Schaden for EISS 15
